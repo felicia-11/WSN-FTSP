@@ -2,15 +2,11 @@
 
 ## Profil
 
-```
 Nama : Felicia Christiany
 
 Skripsi : Pengembangan Sinkronisasi Waktu di Wireless Sensor Network dengan Algoritma Flooding Time Synchronization Protocol
 
 Dosen Pembimbing : Elisati Hulu, M.T.
-```
-
----
 
 ## Deskripsi
 
@@ -37,29 +33,29 @@ Batasan Perangkat Lunak :
 
 ## Cara Menjalankan Perangkat Lunak
 
-1. Unggah kode program pada node sensor _root_ :
-  a. Buka **context1.properties** pada folder **config**.
-  b. Sesuaikan nilai **comport** dengan nomor _port_ node sensor (dapat dilihat pada "Device Manager -> Ports (COM & LPT)").
-  c. Pilih menu **context.set.1** pada Apache Ant bagian _Preon32 Sandbox User_ untuk masuk pada konteks tersebut.
-  d. Pilih menu **.all** pada Apache Ant bagian _Preon32 Sandbox_ untuk mengunggah kode program _Root_ pada node sensor.
-2. Unggah kode program pada node sensor biasa :
-  a. Buka **context2.properties** atau # seterusnya pada **config**.
-  b. Sesuaikan nilai **comport** dengan nomor _port_ node sensor.
-  c. Pilih menu **context.set.2** atau # seterusnya pada Apache Ant bagian _Preon32 Sandbox User_ untuk masuk pada konteks tersebut.
+1. Unggah kode program pada node sensor _root_ :</br>
+   a. Buka **context1.properties** pada folder **config**.</br>
+   b. Sesuaikan nilai **comport** dengan nomor _port_ node sensor (dapat dilihat pada "Device Manager -> Ports (COM & LPT)").</br>
+   c. Pilih menu **context.set.1** pada Apache Ant bagian _Preon32 Sandbox User_ untuk masuk pada konteks tersebut.</br>
+   d. Pilih menu **.all** pada Apache Ant bagian _Preon32 Sandbox_ untuk mengunggah kode program _Root_ pada node sensor.
+2. Unggah kode program pada node sensor biasa :</br>
+  a. Buka **context2.properties** atau # seterusnya pada **config**.</br>
+  b. Sesuaikan nilai **comport** dengan nomor _port_ node sensor.</br>
+  c. Pilih menu **context.set.2** atau # seterusnya pada Apache Ant bagian _Preon32 Sandbox User_ untuk masuk pada konteks tersebut.</br>
   d. Pilih menu **.all** pada Apache Ant bagian _Preon32 Sandbox_ untuk mengunggah kode program _SensorNode_ pada node sensor.
 3. Sesuaikan nomor _port_ node sensor _root_ pada **CMD.java** (line 109).
 4. Klik kanan pada project **Sandbox** dan pilih menu Export.
 5. Pilih "Java -> Runnable JAR file".
 6. Pilih "CMD - CommandLine" pada menu _Launch configuration_.
 7. Tempatkan hasil _jar_ pada folder yang diinginkan melalui menu _Export destination_.
-8. Setelah _jar_ terbentuk, perangkat lunak dapat dijalankan melalui _command prompt_.
-  * Contoh jika nama file "Commander.jar" : **java -jar Commander.jar**
+8. Setelah _jar_ terbentuk, perangkat lunak dapat dijalankan melalui _command prompt_.</br>
+   Contoh jika nama file "Commander.jar" : **java -jar Commander.jar**
   
 ## Fitur Perangkat Lunak
 
-1. Memulai proses penyebaran pesan sinkronisasi oleh _root_ secara kontinu setiap 1.5 detik.
-  * Perintah untuk memanggil fitur : **1**
-2. Memberhentikan proses penyebaran pesan sinkronisasi oleh _root_.
-  * Perintah untuk memanggil fitur : **2**
-3. Keluar dari program dan mematikan node sensor _root_.
-  * Perintah untuk memanggil fitur : **0**
+1. Memulai proses penyebaran pesan sinkronisasi oleh _root_ secara kontinu setiap 1.5 detik.</br>
+   Perintah untuk memanggil fitur : **1**
+2. Memberhentikan proses penyebaran pesan sinkronisasi oleh _root_.</br>
+   Perintah untuk memanggil fitur : **2**
+3. Keluar dari program dan mematikan node sensor _root_.</br>
+   Perintah untuk memanggil fitur : **0**
