@@ -31,6 +31,13 @@ Batasan Perangkat Lunak :
 2. Kabel USB Tipe A
 3. Antarmuka (laptop/komputer) sebanyak daerah persebaran yang diperlukan
 
+## Keterangan Git
+
+* Folder 'CommandLine'</br>
+  'CommandLine' berisi kode program yang digunakan untuk membuat _jar_ pada antarmuka. Kode utama terdapat pada "src/CMD.java"
+* Folder 'Sandbox'</br>
+  'Sandbox' berisi kode-kode program yang akan diunggah pada node sensor. Kode utama terdapat pada "src/Root.java" dan "src/SensorNode.java"
+
 ## Cara Menjalankan Perangkat Lunak
 
 1. Unggah kode program pada node sensor _root_ :</br>
