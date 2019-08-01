@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Preon32 Sandbox User" basedir=".">
+
+	<!-- Makro to switch a context -->
+	<macrodef name="switchContext">
+		<attribute name="to" />
+		<sequential>
+			<propertyfile file="config/currentContext.properties">
+				<entry key="context.file" value="@{to}" />
+			</propertyfile>
+			<echoproperties srcfile="@{to}" />
+		</sequential>
+	</macrodef>
+
+
+	<!-- Targets to switch contexts -->
+	<target name="context.set.1">
+		<switchContext to="config/context1.properties" />
+	</target>
+	<target name="context.set.2">
+		<switchContext to="config/context2.properties" />
+	</target>
+	<target name="context.set.3">
+		<switchContext to="config/context3.properties" />
+	</target>
+	<target name="context.set.4">
+		<switchContext to="config/context4.properties" />
+	</target>
+	<target name="context.set.5">
+		<switchContext to="config/context5.properties" />
+	</target>
+	<target name="context.set.6">
+		<switchContext to="config/context6.properties" />
+	</target>
+
+</project>

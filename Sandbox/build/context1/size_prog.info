@@ -1,0 +1,97 @@
+650		com/virtenio/driver/device/ADT7410
+	121		readValue(II)I
+	74		writeValue(III)V
+	61		open()V
+	43		pollDataReady(I)Z
+	35		isOpened()Z
+	34		setTemperatureBoundRaw(II)V
+	34		getTemperatureBoundRaw(I)I
+	28		<init>(Lcom/virtenio/driver/i2c/I2C;ILcom/virtenio/driver/gpio/GPIO;Lcom/virtenio/driver/gpio/GPIO;)V
+	24		setMode(I)V
+	17		close()V
+	17		isDataReady()Z
+	16		isTempLow()Z
+	16		isTempHigh()Z
+	16		isTempCritical()Z
+	14		setTemperatureBoundCelsius(IF)V
+	13		convertRawTemperatureToCelsius(I)F
+	13		getTemperatureBoundCelsius(I)F
+	11		reset()V
+	9		setHysteresis(I)V
+	8		getTemperatureRaw()I
+	8		getTemperatureCelsius()F
+	8		setConfiguration(I)V
+	8		getHysteresis()I
+	8		getID()I
+	7		getConfiguration()I
+	7		getStatus()I
+
+256		com/virtenio/driver/i2c/NativeI2C
+	32		getManager()Lcom/virtenio/driver/InstanceManager;
+	26		read(I[BII)I
+	23		write(I[BII)V
+	22		isOpened()Z
+	14		errorCheck()V
+	13		read(I)I
+	13		setRepeatedStart(Z)V
+	13		acquireLock()V
+	13		releaseLock()V
+	12		getInstance(I)Lcom/virtenio/driver/i2c/NativeI2C;
+	12		open(I)V
+	12		close()V
+	12		write(II)V
+	10		read(I[B)I
+	10		write(I[B)V
+	7		access$100(Lcom/virtenio/driver/i2c/NativeI2C;I)I
+	6		<init>(I)V
+	6		<init>(ILcom/virtenio/driver/i2c/NativeI2C$1;)V
+	0		command(Lcom/virtenio/driver/i2c/NativeI2C;I)I
+
+192		Prog
+	104		run()V
+	71		init()V
+	11		main([Ljava/lang/String;)V
+	6		<init>()V
+
+110		com/virtenio/driver/DriverException
+	80		getMessage()Ljava/lang/String;
+	11		<init>(ILjava/lang/String;)V
+	10		<init>(I)V
+	7		<init>(Ljava/lang/Throwable;)V
+	2		getErrorCode()I
+
+68		com/virtenio/driver/InstanceManager
+	62		getInstance(I)Ljava/lang/Object;
+	6		<init>()V
+
+54		com/virtenio/driver/DriverInitError
+	14		forErrorCode(I)V
+	10		<init>(I)V
+	8		<init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+	7		<init>(Ljava/lang/String;)V
+	7		<init>(Ljava/lang/Throwable;)V
+	6		<init>()V
+	2		getErrorId()I
+
+30		com/virtenio/driver/NativeDeviceDriver
+	10		<init>(I)V
+	6		<init>()V
+	5		setInstanceId(I)V
+	5		clearLastError()V
+	2		getInstanceId()I
+	2		getLastError()I
+
+27		com/virtenio/driver/i2c/NativeI2C$1
+	10		createInstance(I)Lcom/virtenio/driver/i2c/NativeI2C;
+	6		getInstanceCount()I
+	6		createInstance(I)Ljava/lang/Object;
+	5		<init>()V
+
+12		com/virtenio/driver/i2c/I2CException
+	6		<init>(I)V
+	6		<init>(Ljava/lang/Throwable;)V
+
+12		com/virtenio/driver/gpio/GPIOException
+	6		<init>(I)V
+	6		<init>(Ljava/lang/Throwable;)V
+

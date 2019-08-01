@@ -1,0 +1,3156 @@
+name prog
+import [
+	rt
+]
+header {
+	importPoolOffset 48
+	importCount 1
+	classPoolOffset 64
+	interfacePoolOffset 144
+	implementsPoolOffset 152
+	methodPoolOffset 160
+	codePoolOffset 1180
+	stringPoolOffset 1084
+	mainMethodIndex 0
+	staticPrimitiveFieldCount 0
+	staticReferenceFieldCount 1
+	classCount 10
+	interfaceCount 3
+	implementsCount 2
+	methodCount 77
+	codePoolSize 1411
+	stringCount 8
+}
+classes [
+	{
+		index 0
+		name Prog
+		interfaceCount 0
+		superIndex 60
+		superImportIndex 0
+		implementsStart -1
+		methodCount 4
+		methodStart 0
+		superName java/lang/Object
+		instanceFieldCount 2
+		flags 33
+		srcFile Prog.java
+		implements [
+		]
+		instanceFields [
+			{
+				index 0
+				name i2c
+				descriptor Lcom/virtenio/driver/i2c/NativeI2C;
+				className Prog
+			}
+			{
+				index 1
+				name temperatureSensor
+				descriptor Lcom/virtenio/driver/device/ADT7410;
+				className Prog
+			}
+		]
+	}
+	{
+		index 1
+		name com/virtenio/driver/i2c/I2CException
+		interfaceCount 0
+		superIndex 2
+		superImportIndex -1
+		implementsStart -1
+		methodCount 2
+		methodStart 4
+		superName com/virtenio/driver/DriverException
+		instanceFieldCount 4
+		flags 33
+		srcFile I2CException.java
+		implements [
+		]
+		instanceFields [
+			{
+				index 0
+				name stackTrace
+				descriptor "[B"
+				className java/lang/Throwable
+			}
+			{
+				index 1
+				name detailMessage
+				descriptor Ljava/lang/String;
+				className java/lang/Throwable
+			}
+			{
+				index 2
+				name cause
+				descriptor Ljava/lang/Throwable;
+				className java/lang/Throwable
+			}
+			{
+				index 3
+				name errorCode
+				descriptor I
+				className com/virtenio/driver/DriverException
+			}
+		]
+	}
+	{
+		index 2
+		name com/virtenio/driver/DriverException
+		interfaceCount 0
+		superIndex 45
+		superImportIndex 0
+		implementsStart -1
+		methodCount 5
+		methodStart 6
+		superName java/lang/Exception
+		instanceFieldCount 4
+		flags 33
+		srcFile DriverException.java
+		implements [
+		]
+		instanceFields [
+			{
+				index 0
+				name stackTrace
+				descriptor "[B"
+				className java/lang/Throwable
+			}
+			{
+				index 1
+				name detailMessage
+				descriptor Ljava/lang/String;
+				className java/lang/Throwable
+			}
+			{
+				index 2
+				name cause
+				descriptor Ljava/lang/Throwable;
+				className java/lang/Throwable
+			}
+			{
+				index 3
+				name errorCode
+				descriptor I
+				className com/virtenio/driver/DriverException
+			}
+		]
+	}
+	{
+		index 3
+		name com/virtenio/driver/device/ADT7410
+		interfaceCount 1
+		superIndex 60
+		superImportIndex 0
+		implementsStart 0
+		methodCount 26
+		methodStart 11
+		superName java/lang/Object
+		instanceFieldCount 5
+		flags 33
+		srcFile ADT7410.java
+		implements [
+			com/virtenio/driver/DeviceDriver
+		]
+		instanceFields [
+			{
+				index 0
+				name buffer
+				descriptor "[B"
+				className com/virtenio/driver/device/ADT7410
+			}
+			{
+				index 1
+				name addr
+				descriptor I
+				className com/virtenio/driver/device/ADT7410
+			}
+			{
+				index 2
+				name i2c
+				descriptor Lcom/virtenio/driver/i2c/I2C;
+				className com/virtenio/driver/device/ADT7410
+			}
+			{
+				index 3
+				name a0Pin
+				descriptor Lcom/virtenio/driver/gpio/GPIO;
+				className com/virtenio/driver/device/ADT7410
+			}
+			{
+				index 4
+				name a1Pin
+				descriptor Lcom/virtenio/driver/gpio/GPIO;
+				className com/virtenio/driver/device/ADT7410
+			}
+		]
+	}
+	{
+		index 4
+		name com/virtenio/driver/gpio/GPIOException
+		interfaceCount 0
+		superIndex 2
+		superImportIndex -1
+		implementsStart -1
+		methodCount 2
+		methodStart 37
+		superName com/virtenio/driver/DriverException
+		instanceFieldCount 4
+		flags 33
+		srcFile GPIOException.java
+		implements [
+		]
+		instanceFields [
+			{
+				index 0
+				name stackTrace
+				descriptor "[B"
+				className java/lang/Throwable
+			}
+			{
+				index 1
+				name detailMessage
+				descriptor Ljava/lang/String;
+				className java/lang/Throwable
+			}
+			{
+				index 2
+				name cause
+				descriptor Ljava/lang/Throwable;
+				className java/lang/Throwable
+			}
+			{
+				index 3
+				name errorCode
+				descriptor I
+				className com/virtenio/driver/DriverException
+			}
+		]
+	}
+	{
+		index 5
+		name com/virtenio/driver/i2c/NativeI2C
+		interfaceCount 1
+		superIndex 9
+		superImportIndex -1
+		implementsStart 1
+		methodCount 19
+		methodStart 39
+		superName com/virtenio/driver/NativeDeviceDriver
+		instanceFieldCount 4
+		flags 49
+		srcFile NativeI2C.java
+		implements [
+			com/virtenio/driver/i2c/I2C
+		]
+		instanceFields [
+			{
+				index 0
+				name instanceId
+				descriptor I
+				className com/virtenio/driver/NativeDeviceDriver
+			}
+			{
+				index 1
+				name lastError
+				descriptor I
+				className com/virtenio/driver/NativeDeviceDriver
+			}
+			{
+				index 2
+				name descriptor
+				descriptor J
+				className com/virtenio/driver/NativeDeviceDriver
+			}
+		]
+	}
+	{
+		index 6
+		name com/virtenio/driver/InstanceManager
+		interfaceCount 0
+		superIndex 60
+		superImportIndex 0
+		implementsStart -1
+		methodCount 2
+		methodStart 58
+		superName java/lang/Object
+		instanceFieldCount 1
+		flags 1057
+		srcFile InstanceManager.java
+		implements [
+		]
+		instanceFields [
+			{
+				index 0
+				name instances
+				descriptor "[Ljava/lang/Object;"
+				className com/virtenio/driver/InstanceManager
+			}
+		]
+	}
+	{
+		index 7
+		name com/virtenio/driver/DriverInitError
+		interfaceCount 0
+		superIndex 44
+		superImportIndex 0
+		implementsStart -1
+		methodCount 7
+		methodStart 60
+		superName java/lang/Error
+		instanceFieldCount 4
+		flags 33
+		srcFile DriverInitError.java
+		implements [
+		]
+		instanceFields [
+			{
+				index 0
+				name stackTrace
+				descriptor "[B"
+				className java/lang/Throwable
+			}
+			{
+				index 1
+				name detailMessage
+				descriptor Ljava/lang/String;
+				className java/lang/Throwable
+			}
+			{
+				index 2
+				name cause
+				descriptor Ljava/lang/Throwable;
+				className java/lang/Throwable
+			}
+			{
+				index 3
+				name errorId
+				descriptor I
+				className com/virtenio/driver/DriverInitError
+			}
+		]
+	}
+	{
+		index 8
+		name com/virtenio/driver/i2c/NativeI2C$1
+		interfaceCount 0
+		superIndex 6
+		superImportIndex -1
+		implementsStart -1
+		methodCount 4
+		methodStart 67
+		superName com/virtenio/driver/InstanceManager
+		instanceFieldCount 1
+		flags 48
+		srcFile NativeI2C.java
+		implements [
+		]
+		instanceFields [
+			{
+				index 0
+				name instances
+				descriptor "[Ljava/lang/Object;"
+				className com/virtenio/driver/InstanceManager
+			}
+		]
+	}
+	{
+		index 9
+		name com/virtenio/driver/NativeDeviceDriver
+		interfaceCount 1
+		superIndex 60
+		superImportIndex 0
+		implementsStart 0
+		methodCount 6
+		methodStart 71
+		superName java/lang/Object
+		instanceFieldCount 4
+		flags 1057
+		srcFile NativeDeviceDriver.java
+		implements [
+			com/virtenio/driver/DeviceDriver
+		]
+		instanceFields [
+			{
+				index 0
+				name instanceId
+				descriptor I
+				className com/virtenio/driver/NativeDeviceDriver
+			}
+			{
+				index 1
+				name lastError
+				descriptor I
+				className com/virtenio/driver/NativeDeviceDriver
+			}
+			{
+				index 2
+				name descriptor
+				descriptor J
+				className com/virtenio/driver/NativeDeviceDriver
+			}
+		]
+	}
+]
+interfaces [
+	{
+		index 0
+		name com/virtenio/driver/i2c/I2C
+		superCount 1
+		implementsStart 0
+		flags 1537
+		extends [
+			com/virtenio/driver/DeviceDriver
+		]
+	}
+	{
+		index 1
+		name com/virtenio/driver/DeviceDriver
+		superCount 0
+		implementsStart -1
+		flags 1537
+		extends [
+		]
+	}
+	{
+		index 2
+		name com/virtenio/driver/gpio/GPIO
+		superCount 1
+		implementsStart 0
+		flags 1537
+		extends [
+			com/virtenio/driver/DeviceDriver
+		]
+	}
+]
+implements [
+	{
+		index 0
+		interfaceIndex 1
+		interfaceName com/virtenio/driver/DeviceDriver
+		typeId 2
+		importIndex -1
+		next false
+	}
+	{
+		index 1
+		interfaceIndex 0
+		interfaceName com/virtenio/driver/i2c/I2C
+		typeId 2
+		importIndex -1
+		next false
+	}
+]
+methods [
+	{
+		index 0
+		signature "<init>()V"
+		definedIn Prog
+		signatureHash 10657
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 192
+		codeLength 6
+		codeOffset 0
+		getter1For -1
+		getter2For -1
+		localVars [
+			{
+				startPC 0
+				length 5
+				name this
+				descriptor LProg;
+				index 0
+			}
+		]
+		pcToLine {
+			0 30
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 5
+		}
+	}
+	{
+		index 1
+		signature init()V
+		definedIn Prog
+		signatureHash 31567
+		maxStack 7
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 65600
+		codeLength 71
+		codeOffset 6
+		getter1For -1
+		getter2For -1
+		localVars [
+			{
+				startPC 0
+				length 76
+				name this
+				descriptor LProg;
+				index 0
+			}
+		]
+		pcToLine {
+			0 35
+			10 36
+			17 37
+			26 39
+			36 40
+			51 41
+			55 42
+			60 44
+			70 45
+		}
+		pcTranslation {
+			0 0
+			3 4
+			5 7
+			8 10
+			9 11
+			10 12
+			13 15
+			16 17
+			17 17
+			20 18
+			22 23
+			25 26
+			28 30
+			30 33
+			33 36
+			34 37
+			37 37
+			38 41
+			39 41
+			42 42
+			44 44
+			45 45
+			46 46
+			49 49
+			52 51
+			53 51
+			56 52
+			59 55
+			60 55
+			63 56
+			64 57
+			67 60
+			70 64
+			72 67
+			75 70
+		}
+	}
+	{
+		index 2
+		signature run()V
+		definedIn Prog
+		signatureHash 2844
+		maxStack 3
+		maxLocals 3
+		exceptionCount 1
+		argsFieldCount 1
+		flags 104
+		codeLength 94
+		codeOffset 87
+		getter1For -1
+		getter2For -1
+		localVars [
+			{
+				startPC 9
+				length 53
+				name raw
+				descriptor I
+				index 1
+			}
+			{
+				startPC 14
+				length 45
+				name celsius
+				descriptor F
+				index 2
+			}
+			{
+				startPC 81
+				length 8
+				name e
+				descriptor Ljava/lang/Exception;
+				index 1
+			}
+			{
+				startPC 0
+				length 80
+				name this
+				descriptor LProg;
+				index 0
+			}
+		]
+		pcToLine {
+			0 48
+			4 51
+			9 52
+			14 53
+			64 54
+			77 57
+			80 55
+			81 56
+			91 57
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 4
+			5 4
+			8 5
+			11 8
+			12 9
+			13 9
+			16 10
+			19 13
+			20 14
+			23 18
+			26 18
+			27 22
+			30 26
+			32 29
+			35 33
+			36 34
+			39 38
+			41 41
+			44 45
+			45 46
+			48 50
+			50 53
+			53 57
+			56 61
+			59 64
+			62 73
+			65 77
+			68 80
+			69 81
+			72 85
+			74 88
+			77 91
+		}
+	}
+	{
+		index 3
+		signature "main([Ljava/lang/String;)V"
+		definedIn Prog
+		signatureHash 65044
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 2
+		codeLength 11
+		codeOffset 181
+		getter1For -1
+		getter2For -1
+		localVars [
+			{
+				startPC 0
+				length 11
+				name args
+				descriptor "[Ljava/lang/String;"
+				index 0
+			}
+		]
+		pcToLine {
+			0 62
+			10 63
+		}
+		pcTranslation {
+			0 0
+			3 0
+			4 4
+			7 7
+			10 10
+		}
+	}
+	{
+		index 4
+		signature "<init>(I)V"
+		definedIn com/virtenio/driver/i2c/I2CException
+		signatureHash 34633
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 192
+		codeLength 6
+		codeOffset 192
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 18
+			5 19
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 5
+		}
+	}
+	{
+		index 5
+		signature "<init>(Ljava/lang/Throwable;)V"
+		definedIn com/virtenio/driver/i2c/I2CException
+		signatureHash 47660
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 128
+		codeLength 6
+		codeOffset 198
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 29
+			5 30
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 5
+		}
+	}
+	{
+		index 6
+		signature "<init>(I)V"
+		definedIn com/virtenio/driver/DriverException
+		signatureHash 34633
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 192
+		codeLength 10
+		codeOffset 204
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 16
+			5 17
+			9 18
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 5
+			5 5
+			6 7
+			9 9
+		}
+	}
+	{
+		index 7
+		signature "<init>(ILjava/lang/String;)V"
+		definedIn com/virtenio/driver/DriverException
+		signatureHash 25758
+		maxStack 2
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 3
+		flags 192
+		codeLength 11
+		codeOffset 214
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 31
+			6 32
+			10 33
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 6
+			6 6
+			7 8
+			10 10
+		}
+	}
+	{
+		index 8
+		signature "<init>(Ljava/lang/Throwable;)V"
+		definedIn com/virtenio/driver/DriverException
+		signatureHash 47660
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 192
+		codeLength 7
+		codeOffset 225
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 43
+			6 44
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 6
+		}
+	}
+	{
+		index 9
+		signature getErrorCode()I
+		definedIn com/virtenio/driver/DriverException
+		signatureHash 41392
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 2
+		codeOffset 232
+		getter1For 3
+		getter2For -1
+		pcToLine {
+			0 52
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+		}
+	}
+	{
+		index 10
+		signature getMessage()Ljava/lang/String;
+		definedIn com/virtenio/driver/DriverException
+		signatureHash 47771
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 1
+		flags 0
+		codeLength 80
+		codeOffset 234
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 62
+			4 63
+			8 64
+			20 66
+			45 68
+			78 69
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 3
+			5 4
+			6 5
+			9 8
+			12 8
+			13 12
+			16 16
+			17 17
+			20 20
+			23 20
+			24 24
+			27 28
+			28 29
+			31 33
+			33 36
+			36 40
+			39 44
+			40 45
+			43 45
+			44 49
+			47 53
+			48 54
+			51 58
+			53 61
+			56 65
+			57 66
+			60 69
+			63 73
+			66 77
+			67 78
+			68 79
+		}
+	}
+	{
+		index 11
+		signature "<init>(Lcom/virtenio/driver/i2c/I2C;ILcom/virtenio/driver/gpio/GPIO;Lcom/virtenio/driver/gpio/GPIO;)V"
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 45277
+		maxStack 2
+		maxLocals 5
+		exceptionCount 0
+		argsFieldCount 5
+		flags 192
+		codeLength 28
+		codeOffset 314
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 219
+			5 187
+			11 220
+			15 221
+			19 222
+			23 223
+			27 224
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 5
+			5 6
+			6 7
+			8 9
+			11 11
+			12 11
+			13 13
+			16 15
+			17 15
+			18 17
+			21 19
+			22 19
+			23 21
+			26 23
+			27 23
+			29 25
+			32 27
+		}
+	}
+	{
+		index 12
+		signature open()V
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 53067
+		maxStack 3
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 61
+		codeOffset 342
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 236
+			4 237
+			9 238
+			30 242
+			34 243
+			39 244
+			60 246
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+			7 4
+			8 4
+			11 5
+			12 6
+			17 9
+			18 9
+			21 10
+			22 10
+			25 11
+			27 13
+			30 16
+			31 16
+			34 17
+			36 19
+			39 22
+			40 23
+			43 26
+			44 27
+			49 30
+			50 30
+			53 31
+			56 34
+			57 34
+			60 35
+			61 36
+			66 39
+			67 39
+			70 40
+			71 40
+			74 41
+			76 43
+			79 46
+			80 46
+			83 47
+			85 49
+			88 52
+			89 53
+			92 56
+			93 57
+			98 60
+		}
+	}
+	{
+		index 13
+		signature isOpened()Z
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 1141
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 35
+		codeOffset 403
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 260
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+			9 4
+			12 7
+			13 7
+			16 8
+			19 11
+			20 11
+			23 12
+			28 15
+			31 18
+			32 18
+			35 19
+			38 22
+			39 22
+			42 23
+			47 26
+			50 29
+			51 30
+			54 33
+			55 34
+		}
+	}
+	{
+		index 14
+		signature close()V
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 53782
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 17
+		codeOffset 438
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 273
+			4 274
+			8 276
+			12 277
+			16 279
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+			7 4
+			8 4
+			11 5
+			16 8
+			17 8
+			20 9
+			23 12
+			24 12
+			27 13
+			32 16
+		}
+	}
+	{
+		index 15
+		signature writeValue(III)V
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 23990
+		maxStack 6
+		maxLocals 7
+		exceptionCount 2
+		argsFieldCount 4
+		flags 65632
+		codeLength 54
+		codeOffset 475
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 294
+			4 295
+			6 296
+			13 297
+			18 298
+			28 300
+			33 301
+			43 302
+			53 303
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+			5 2
+			7 3
+			8 4
+			9 5
+			11 6
+			12 6
+			15 7
+			17 8
+			20 10
+			21 11
+			22 12
+			23 13
+			24 14
+			25 15
+			28 18
+			29 18
+			32 19
+			34 20
+			37 22
+			38 23
+			40 25
+			41 26
+			42 27
+			43 28
+			44 28
+			47 29
+			49 29
+			50 31
+			51 32
+			52 33
+			53 33
+			56 34
+			57 34
+			60 35
+			61 35
+			64 36
+			65 37
+			66 38
+			67 39
+			68 40
+			73 43
+			75 44
+			76 45
+			79 48
+			81 49
+			83 50
+			84 51
+			86 52
+			87 53
+		}
+	}
+	{
+		index 16
+		signature readValue(II)I
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 37030
+		maxStack 5
+		maxLocals 6
+		exceptionCount 4
+		argsFieldCount 3
+		flags 65632
+		codeLength 81
+		codeOffset 569
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 317
+			4 318
+			8 319
+			12 321
+			17 322
+			23 323
+			32 325
+			36 326
+			39 325
+			46 327
+			54 328
+			59 329
+			72 331
+			76 332
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+			5 2
+			6 3
+			7 4
+			8 4
+			11 5
+			12 6
+			13 7
+			14 8
+			15 8
+			18 9
+			23 12
+			24 12
+			27 13
+			28 14
+			33 17
+			34 17
+			37 18
+			38 18
+			41 19
+			42 20
+			47 23
+			48 23
+			51 24
+			52 24
+			55 25
+			56 25
+			59 26
+			60 27
+			61 28
+			66 31
+			67 32
+			68 32
+			71 33
+			76 36
+			79 39
+			81 40
+			82 40
+			85 41
+			90 44
+			92 45
+			93 46
+			96 49
+			97 49
+			100 50
+			101 51
+			102 52
+			103 53
+			105 54
+			106 55
+			107 56
+			110 59
+			112 60
+			114 62
+			115 63
+			118 66
+			119 66
+			122 67
+			123 68
+			124 69
+			125 70
+			126 71
+			128 72
+			130 72
+			131 74
+			132 75
+			133 76
+			135 77
+			136 78
+			137 79
+			139 80
+		}
+	}
+	{
+		index 17
+		signature getTemperatureRaw()I
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 57408
+		maxStack 3
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 8
+		codeOffset 650
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 346
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			3 3
+			6 6
+			7 7
+		}
+	}
+	{
+		index 18
+		signature getTemperatureCelsius()F
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 62575
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 8
+		codeOffset 658
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 358
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 4
+			7 7
+		}
+	}
+	{
+		index 19
+		signature convertRawTemperatureToCelsius(I)F
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 6381
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 66
+		codeLength 13
+		codeOffset 666
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 374
+		}
+		pcTranslation {
+			0 0
+			1 1
+			3 3
+			4 4
+			5 5
+			6 6
+			8 11
+			9 12
+		}
+	}
+	{
+		index 20
+		signature setConfiguration(I)V
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 12029
+		maxStack 4
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 64
+		codeLength 8
+		codeOffset 679
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 386
+			7 387
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			3 3
+			4 4
+			7 7
+		}
+	}
+	{
+		index 21
+		signature getConfiguration()I
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 50515
+		maxStack 3
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 7
+		codeOffset 687
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 398
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			3 3
+			6 6
+		}
+	}
+	{
+		index 22
+		signature setMode(I)V
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 35387
+		maxStack 4
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 2
+		flags 64
+		codeLength 24
+		codeOffset 694
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 414
+			7 415
+			12 416
+			16 417
+			23 418
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			3 3
+			6 6
+			7 7
+			8 8
+			10 10
+			11 11
+			12 12
+			13 12
+			14 14
+			15 15
+			16 16
+			17 17
+			18 18
+			19 19
+			20 20
+			23 23
+		}
+	}
+	{
+		index 23
+		signature reset()V
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 54298
+		maxStack 4
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 11
+		codeOffset 718
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 427
+			10 428
+		}
+		pcTranslation {
+			0 0
+			1 1
+			3 3
+			6 6
+			7 7
+			10 10
+		}
+	}
+	{
+		index 24
+		signature getStatus()I
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 62106
+		maxStack 3
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 7
+		codeOffset 729
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 437
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			3 3
+			6 6
+		}
+	}
+	{
+		index 25
+		signature setTemperatureBoundRaw(II)V
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 8296
+		maxStack 4
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 3
+		flags 64
+		codeLength 34
+		codeOffset 736
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 470
+			17 471
+			26 473
+			33 474
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			5 5
+			6 6
+			8 8
+			11 11
+			12 12
+			14 14
+			17 17
+			20 17
+			21 21
+			24 25
+			25 26
+			26 26
+			27 28
+			28 29
+			29 30
+			32 33
+		}
+	}
+	{
+		index 26
+		signature setTemperatureBoundCelsius(IF)V
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 40451
+		maxStack 4
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 3
+		flags 64
+		codeLength 14
+		codeOffset 770
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 491
+			13 492
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			3 3
+			5 8
+			6 9
+			7 10
+			10 13
+		}
+	}
+	{
+		index 27
+		signature getTemperatureBoundRaw(I)I
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 5520
+		maxStack 3
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 64
+		codeLength 34
+		codeOffset 784
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 507
+			17 508
+			26 510
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			5 5
+			6 6
+			8 8
+			11 11
+			12 12
+			14 14
+			17 17
+			20 17
+			21 21
+			24 25
+			25 26
+			26 26
+			27 28
+			28 29
+			31 32
+			32 33
+		}
+	}
+	{
+		index 28
+		signature getTemperatureBoundCelsius(I)F
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 42695
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 64
+		codeLength 13
+		codeOffset 818
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 526
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 5
+			6 6
+			8 11
+			9 12
+		}
+	}
+	{
+		index 29
+		signature setHysteresis(I)V
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 39306
+		maxStack 4
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 64
+		codeLength 9
+		codeOffset 831
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 542
+			8 543
+		}
+		pcTranslation {
+			0 0
+			1 1
+			3 3
+			4 4
+			5 5
+			8 8
+		}
+	}
+	{
+		index 30
+		signature getHysteresis()I
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 48898
+		maxStack 3
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 8
+		codeOffset 840
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 554
+		}
+		pcTranslation {
+			0 0
+			1 1
+			3 3
+			4 4
+			7 7
+		}
+	}
+	{
+		index 31
+		signature getID()I
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 624
+		maxStack 3
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 8
+		codeOffset 848
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 564
+		}
+		pcTranslation {
+			0 0
+			1 1
+			3 3
+			4 4
+			7 7
+		}
+	}
+	{
+		index 32
+		signature isDataReady()Z
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 31755
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 17
+		codeOffset 856
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 575
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 4
+			7 7
+			8 8
+			11 11
+			12 12
+			15 15
+			16 16
+		}
+	}
+	{
+		index 33
+		signature isTempLow()Z
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 21758
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 16
+		codeOffset 873
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 586
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 4
+			6 6
+			7 7
+			10 10
+			11 11
+			14 14
+			15 15
+		}
+	}
+	{
+		index 34
+		signature isTempHigh()Z
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 1585
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 16
+		codeOffset 889
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 597
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 4
+			6 6
+			7 7
+			10 10
+			11 11
+			14 14
+			15 15
+		}
+	}
+	{
+		index 35
+		signature isTempCritical()Z
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 34092
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 16
+		codeOffset 905
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 608
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 4
+			6 6
+			7 7
+			10 10
+			11 11
+			14 14
+			15 15
+		}
+	}
+	{
+		index 36
+		signature pollDataReady(I)Z
+		definedIn com/virtenio/driver/device/ADT7410
+		signatureHash 62800
+		maxStack 4
+		maxLocals 4
+		exceptionCount 0
+		argsFieldCount 2
+		flags 0
+		codeLength 43
+		codeOffset 921
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 620
+			6 621
+			13 622
+			26 623
+			39 624
+			41 627
+		}
+		pcTranslation {
+			0 0
+			3 4
+			4 6
+			5 7
+			8 10
+			11 13
+			14 22
+			17 26
+			20 30
+			21 32
+			22 33
+			23 34
+			24 35
+			25 36
+			28 39
+			29 40
+			30 41
+			31 42
+		}
+	}
+	{
+		index 37
+		signature "<init>(I)V"
+		definedIn com/virtenio/driver/gpio/GPIOException
+		signatureHash 34633
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 192
+		codeLength 6
+		codeOffset 964
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 18
+			5 19
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 5
+		}
+	}
+	{
+		index 38
+		signature "<init>(Ljava/lang/Throwable;)V"
+		definedIn com/virtenio/driver/gpio/GPIOException
+		signatureHash 47660
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 128
+		codeLength 6
+		codeOffset 970
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 29
+			5 30
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 5
+		}
+	}
+	{
+		index 39
+		signature command(Lcom/virtenio/driver/i2c/NativeI2C;I)I
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 25870
+		maxStack 0
+		maxLocals 0
+		exceptionCount 0
+		argsFieldCount 2
+		flags 196690
+		codeLength 0
+		codeOffset 0
+		getter1For -1
+		getter2For -1
+		nativeId {
+			importIndex 0
+			nativeId 66
+		}
+	}
+	{
+		index 40
+		signature getManager()Lcom/virtenio/driver/InstanceManager;
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 59513
+		maxStack 2
+		maxLocals 0
+		exceptionCount 0
+		argsFieldCount 0
+		flags 131139
+		codeLength 32
+		codeOffset 976
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 43
+			7 44
+			16 45
+			27 57
+		}
+		pcTranslation {
+			0 0
+			3 4
+			6 7
+			7 8
+			8 9
+			11 13
+			14 16
+			17 16
+			18 20
+			21 23
+			24 27
+			27 31
+		}
+	}
+	{
+		index 41
+		signature getInstance(I)Lcom/virtenio/driver/i2c/NativeI2C;
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 39698
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 131138
+		codeLength 12
+		codeOffset 1008
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 68
+		}
+		pcTranslation {
+			0 0
+			3 3
+			4 4
+			7 7
+			10 11
+		}
+	}
+	{
+		index 42
+		signature "<init>(I)V"
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 34633
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 196800
+		codeLength 6
+		codeOffset 1020
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 75
+			5 76
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 5
+		}
+	}
+	{
+		index 43
+		signature errorCheck()V
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 22025
+		maxStack 3
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 196672
+		codeLength 14
+		codeOffset 1026
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 82
+			4 83
+			13 85
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+			7 4
+			10 4
+			11 8
+			12 8
+			15 9
+			18 12
+			19 13
+		}
+	}
+	{
+		index 44
+		signature open(I)V
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 50043
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 131136
+		codeLength 12
+		codeOffset 1040
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 89
+			7 90
+			11 91
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			5 6
+			6 7
+			7 8
+			10 11
+		}
+	}
+	{
+		index 45
+		signature isOpened()Z
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 1141
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 1
+		flags 131136
+		codeLength 22
+		codeOffset 1052
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 95
+			16 96
+			20 97
+		}
+		pcTranslation {
+			0 0
+			1 1
+			3 3
+			6 7
+			9 10
+			10 11
+			13 14
+			14 15
+			15 16
+			16 17
+			19 20
+			20 21
+		}
+	}
+	{
+		index 46
+		signature close()V
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 53782
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 131136
+		codeLength 12
+		codeOffset 1074
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 102
+			7 103
+			11 104
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			5 6
+			6 7
+			7 8
+			10 11
+		}
+	}
+	{
+		index 47
+		signature read(I)I
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 55564
+		maxStack 2
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 2
+		flags 131136
+		codeLength 13
+		codeOffset 1086
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 108
+			7 109
+			11 110
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			5 6
+			6 7
+			7 8
+			10 11
+			11 12
+		}
+	}
+	{
+		index 48
+		signature "read(I[BII)I"
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 41112
+		maxStack 3
+		maxLocals 6
+		exceptionCount 0
+		argsFieldCount 5
+		flags 131136
+		codeLength 26
+		codeOffset 1099
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 115
+			2 116
+			12 117
+			20 118
+			24 120
+		}
+		pcTranslation {
+			0 0
+			1 1
+			3 2
+			4 2
+			5 4
+			7 5
+			10 9
+			13 12
+			14 13
+			16 15
+			19 19
+			21 20
+			22 21
+			25 24
+			27 25
+		}
+	}
+	{
+		index 49
+		signature "read(I[B)I"
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 46076
+		maxStack 5
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 3
+		flags 131136
+		codeLength 10
+		codeOffset 1125
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 125
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			3 3
+			4 4
+			5 5
+			6 6
+			9 9
+		}
+	}
+	{
+		index 50
+		signature write(II)V
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 44930
+		maxStack 2
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 3
+		flags 131136
+		codeLength 12
+		codeOffset 1135
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 130
+			7 131
+			11 132
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			5 6
+			6 7
+			7 8
+			10 11
+		}
+	}
+	{
+		index 51
+		signature "write(I[BII)V"
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 25806
+		maxStack 3
+		maxLocals 5
+		exceptionCount 0
+		argsFieldCount 5
+		flags 131136
+		codeLength 23
+		codeOffset 1147
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 136
+			10 137
+			18 138
+			22 140
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			4 3
+			7 7
+			10 10
+			11 11
+			13 13
+			16 17
+			17 18
+			18 19
+			21 22
+		}
+	}
+	{
+		index 52
+		signature "write(I[B)V"
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 51332
+		maxStack 5
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 3
+		flags 131136
+		codeLength 10
+		codeOffset 1170
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 144
+			9 145
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			3 3
+			4 4
+			5 5
+			6 6
+			9 9
+		}
+	}
+	{
+		index 53
+		signature setRepeatedStart(Z)V
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 58013
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 131136
+		codeLength 13
+		codeOffset 1180
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 149
+			8 150
+			12 151
+		}
+		pcTranslation {
+			0 0
+			1 1
+			3 3
+			6 7
+			7 8
+			8 9
+			11 12
+		}
+	}
+	{
+		index 54
+		signature acquireLock()V
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 31730
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 131136
+		codeLength 13
+		codeOffset 1193
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 155
+			8 156
+			12 157
+		}
+		pcTranslation {
+			0 0
+			1 1
+			3 3
+			6 7
+			7 8
+			8 9
+			11 12
+		}
+	}
+	{
+		index 55
+		signature releaseLock()V
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 54540
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 131136
+		codeLength 13
+		codeOffset 1206
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 161
+			8 162
+			12 163
+		}
+		pcTranslation {
+			0 0
+			1 1
+			3 3
+			6 7
+			7 8
+			8 9
+			11 12
+		}
+	}
+	{
+		index 56
+		signature "<init>(ILcom/virtenio/driver/i2c/NativeI2C$1;)V"
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 11234
+		maxStack 2
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 3
+		flags 131264
+		codeLength 6
+		codeOffset 1219
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 11
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 5
+		}
+	}
+	{
+		index 57
+		signature access$100(Lcom/virtenio/driver/i2c/NativeI2C;I)I
+		definedIn com/virtenio/driver/i2c/NativeI2C
+		signatureHash 49835
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 131074
+		codeLength 7
+		codeOffset 1225
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 11
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 6
+		}
+	}
+	{
+		index 58
+		signature "<init>()V"
+		definedIn com/virtenio/driver/InstanceManager
+		signatureHash 10657
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 192
+		codeLength 6
+		codeOffset 1232
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 28
+			5 29
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 5
+		}
+	}
+	{
+		index 59
+		signature getInstance(I)Ljava/lang/Object;
+		definedIn com/virtenio/driver/InstanceManager
+		signatureHash 26452
+		maxStack 4
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 2
+		flags 1
+		codeLength 62
+		codeOffset 1238
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 45
+			14 46
+			23 47
+			32 49
+			36 50
+			44 52
+			50 53
+			58 55
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+			7 4
+			8 5
+			11 8
+			14 11
+			15 11
+			18 12
+			19 13
+			20 14
+			21 15
+			24 18
+			25 18
+			26 18
+			29 23
+			32 23
+			33 27
+			36 31
+			37 32
+			38 32
+			41 33
+			44 36
+			45 36
+			46 38
+			49 42
+			52 44
+			53 44
+			56 45
+			57 46
+			58 47
+			61 50
+			62 50
+			65 51
+			66 51
+			67 53
+			68 54
+			71 57
+			72 58
+			73 58
+			76 59
+			77 60
+			78 61
+		}
+	}
+	{
+		index 60
+		signature "<init>()V"
+		definedIn com/virtenio/driver/DriverInitError
+		signatureHash 10657
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 192
+		codeLength 6
+		codeOffset 1300
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 17
+			5 18
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 5
+		}
+	}
+	{
+		index 61
+		signature "<init>(I)V"
+		definedIn com/virtenio/driver/DriverInitError
+		signatureHash 34633
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 192
+		codeLength 10
+		codeOffset 1306
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 24
+			5 25
+			9 26
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 5
+			5 5
+			6 7
+			9 9
+		}
+	}
+	{
+		index 62
+		signature getErrorId()I
+		definedIn com/virtenio/driver/DriverInitError
+		signatureHash 45704
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 2
+		codeOffset 1316
+		getter1For 3
+		getter2For -1
+		pcToLine {
+			0 32
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+		}
+	}
+	{
+		index 63
+		signature "<init>(Ljava/lang/String;)V"
+		definedIn com/virtenio/driver/DriverInitError
+		signatureHash 5175
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 192
+		codeLength 7
+		codeOffset 1318
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 42
+			6 43
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 6
+		}
+	}
+	{
+		index 64
+		signature "<init>(Ljava/lang/String;Ljava/lang/Throwable;)V"
+		definedIn com/virtenio/driver/DriverInitError
+		signatureHash 54478
+		maxStack 3
+		maxLocals 3
+		exceptionCount 0
+		argsFieldCount 3
+		flags 192
+		codeLength 8
+		codeOffset 1325
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 55
+			7 56
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			3 3
+			6 7
+		}
+	}
+	{
+		index 65
+		signature "<init>(Ljava/lang/Throwable;)V"
+		definedIn com/virtenio/driver/DriverInitError
+		signatureHash 47660
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 192
+		codeLength 7
+		codeOffset 1333
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 66
+			6 67
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 6
+		}
+	}
+	{
+		index 66
+		signature forErrorCode(I)V
+		definedIn com/virtenio/driver/DriverInitError
+		signatureHash 33324
+		maxStack 3
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 131074
+		codeLength 14
+		codeOffset 1340
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 77
+			4 78
+			13 80
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 4
+			7 4
+			8 8
+			9 9
+			12 12
+			13 13
+		}
+	}
+	{
+		index 67
+		signature "<init>()V"
+		definedIn com/virtenio/driver/i2c/NativeI2C$1
+		signatureHash 10657
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 131264
+		codeLength 5
+		codeOffset 1354
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 45
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 4
+		}
+	}
+	{
+		index 68
+		signature createInstance(I)Lcom/virtenio/driver/i2c/NativeI2C;
+		definedIn com/virtenio/driver/i2c/NativeI2C$1
+		signatureHash 7916
+		maxStack 4
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 131136
+		codeLength 10
+		codeOffset 1359
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 48
+		}
+		pcTranslation {
+			0 0
+			3 0
+			4 4
+			5 5
+			6 6
+			9 9
+		}
+	}
+	{
+		index 69
+		signature getInstanceCount()I
+		definedIn com/virtenio/driver/i2c/NativeI2C$1
+		signatureHash 1396
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 131136
+		codeLength 6
+		codeOffset 1369
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 53
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			5 5
+		}
+	}
+	{
+		index 70
+		signature createInstance(I)Ljava/lang/Object;
+		definedIn com/virtenio/driver/i2c/NativeI2C$1
+		signatureHash 24465
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 131072
+		codeLength 6
+		codeOffset 1375
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 45
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 5
+		}
+	}
+	{
+		index 71
+		signature "<init>()V"
+		definedIn com/virtenio/driver/NativeDeviceDriver
+		signatureHash 10657
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 192
+		codeLength 6
+		codeOffset 1381
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 38
+			5 39
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 5
+		}
+	}
+	{
+		index 72
+		signature "<init>(I)V"
+		definedIn com/virtenio/driver/NativeDeviceDriver
+		signatureHash 34633
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 192
+		codeLength 10
+		codeOffset 1387
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 47
+			5 48
+			9 49
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 5
+			5 5
+			6 7
+			9 9
+		}
+	}
+	{
+		index 73
+		signature getInstanceId()I
+		definedIn com/virtenio/driver/NativeDeviceDriver
+		signatureHash 25371
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 2
+		codeOffset 1397
+		getter1For 0
+		getter2For -1
+		pcToLine {
+			0 55
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+		}
+	}
+	{
+		index 74
+		signature setInstanceId(I)V
+		definedIn com/virtenio/driver/NativeDeviceDriver
+		signatureHash 48590
+		maxStack 2
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 2
+		flags 64
+		codeLength 5
+		codeOffset 1399
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 65
+			4 66
+		}
+		pcTranslation {
+			0 0
+			1 0
+			2 2
+			5 4
+		}
+	}
+	{
+		index 75
+		signature getLastError()I
+		definedIn com/virtenio/driver/NativeDeviceDriver
+		signatureHash 62473
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 64
+		codeLength 2
+		codeOffset 1404
+		getter1For 1
+		getter2For -1
+		pcToLine {
+			0 74
+		}
+		pcTranslation {
+			0 0
+			1 0
+			4 1
+		}
+	}
+	{
+		index 76
+		signature clearLastError()V
+		definedIn com/virtenio/driver/NativeDeviceDriver
+		signatureHash 7183
+		maxStack 2
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 0
+		codeLength 5
+		codeOffset 1406
+		getter1For -1
+		getter2For -1
+		pcToLine {
+			0 81
+			4 82
+		}
+		pcTranslation {
+			0 0
+			1 1
+			2 2
+			5 4
+		}
+	}
+]
+abstractMethods [
+	{
+		signature getInstanceCount()I
+		definedIn com/virtenio/driver/InstanceManager
+		flags 0
+	}
+	{
+		signature createInstance(I)Ljava/lang/Object;
+		definedIn com/virtenio/driver/InstanceManager
+		flags 0
+	}
+]
+interfaceMethods [
+	{
+		signature open(I)V
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature isOpened()Z
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature close()V
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature setRepeatedStart(Z)V
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature read(I)I
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature "read(I[BII)I"
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature "read(I[B)I"
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature write(II)V
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature "write(I[BII)V"
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature "write(I[B)V"
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature acquireLock()V
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature releaseLock()V
+		definedIn com/virtenio/driver/i2c/I2C
+		flags 0
+	}
+	{
+		signature isOpened()Z
+		definedIn com/virtenio/driver/DeviceDriver
+		flags 0
+	}
+	{
+		signature close()V
+		definedIn com/virtenio/driver/DeviceDriver
+		flags 0
+	}
+	{
+		signature open(I)V
+		definedIn com/virtenio/driver/gpio/GPIO
+		flags 0
+	}
+	{
+		signature open(II)V
+		definedIn com/virtenio/driver/gpio/GPIO
+		flags 0
+	}
+	{
+		signature isOpened()Z
+		definedIn com/virtenio/driver/gpio/GPIO
+		flags 0
+	}
+	{
+		signature close()V
+		definedIn com/virtenio/driver/gpio/GPIO
+		flags 0
+	}
+	{
+		signature set(I)V
+		definedIn com/virtenio/driver/gpio/GPIO
+		flags 0
+	}
+	{
+		signature get()I
+		definedIn com/virtenio/driver/gpio/GPIO
+		flags 0
+	}
+	{
+		signature toggle()V
+		definedIn com/virtenio/driver/gpio/GPIO
+		flags 0
+	}
+]
+staticPrimitiveFields [
+]
+staticReferenceFields [
+	{
+		index 0
+		name instanceManager
+		descriptor Lcom/virtenio/driver/InstanceManager;
+		definedIn com/virtenio/driver/i2c/NativeI2C
+	}
+]
+strings [
+	{
+		index 0
+		string I2C(Init)
+	}
+	{
+		index 1
+		string " [°C]"
+	}
+	{
+		index 2
+		string "ADT7410 error"
+	}
+	{
+		index 3
+		string ADT7410(Init)
+	}
+	{
+		index 4
+		string "; "
+	}
+	{
+		index 5
+		string "ADT7410: raw="
+	}
+	{
+		index 6
+		string Done(Init)
+	}
+	{
+		index 7
+		string "Error Code: "
+	}
+]
+importedNativeMethods [
+]
