@@ -1,0 +1,120 @@
+######################################################
+# CHANGELOG Commander
+######################################################
+
+21.09.2013
+- Added dumpInfo, dumpBootInfo, dumpModules handlers
+
+01.10.2013
+- Changed the commander.bat and commander.sh
+- Updated the command line info file
+
+20.09.2013
+- Optimized some timings when programming a device.
+
+17.09.2013
+- Optimized the coommander.bat and commander.sh files.
+
+13.05.2013
+- Optimized the classes to fix latest issues.
+
+02.04.2013
+- Updated the setMode behavior which should solve a programming issue
+
+25.02.2013
+- Added option bytes target to write the options byte of the STM32
+- Improved the pureJavaComm wrapper to get better speeds when reading and writing
+
+11.12.2012
+- Improved license key uploading
+- Added some new features to the console
+
+31.08.2012
+- Added PureJavaComm for serials, which seems to be more stable than RXTX
+
+26.07.2012
+- The system property rxtx.base can be used to set the base path of the native libs for rxtx. If the property is set then the commander determines the arch and appends the arch to the folder and add this path to the path of the system property java.library.path.
+
+06.07.2012
+- Added some minor improvements to the tool
+
+30.03.2012
+- Improved some core parts of the commander.
+- Added a DeviceHelper and Preon32Helper class for use in other Java applications to run a system or to start a module and to get a connection to the device.
+- Improved the remote serial port implementation and the serial port server.
+- Improved some parts regarding the console.
+- Added -console and terminal flags to the run and runModule operations to open a local console and to connect this console with the input and output of the device.
+
+15.03.2012
+- Added some new console features: Line counter, char counter
+- Improved autoscroll feature
+- Limited maximum lines in the console to not overstress your system
+- Improved the serial port implementation
+
+09.03.2012
+- Some bug fixes and faster remote serial port
+- Some new Console features.
+- Enhanced the RXTX serial port implementation.
+
+08.03.2012
+- Changed serial port abstraction.
+- RXTX implementation is now thread safe.
+- Overworked the serial port and connection factory classes.
+- Added a serial port server and a remote serial port implementation.
+- Fixes some minor bugs.
+
+10.02.2012
+- Added class AppStarter for the Preon32
+
+18.10.2011
+- Fixed a bug in license file uploading process
+
+22.09.2011
+- fixed a bug in TextFile.class
+
+16.09.2011
+- license key file uploading changed a little
+
+15.09.2011
+- added some helper classes
+- added isConnected functionality to Connection classes
+- Added socket connection support
+- Some refactorings
+- Some changes to use new socket connection class
+- added license key upload operation
+
+15.08.2011
+- added progard to build script
+
+20.07.2011
+- time synchronization operation added
+
+16.06.2011
+- Added an icon to the Console
+- overworked some classes
+- improved some classes and added some functionalities
+
+07.06.2011
+- overworked some classes
+- Added some manager classes
+- Added STM32 loader
+- Changed upload protocol
+
+30.05.2011
+- Added serial port abstraction classes and tmplemented RXTX variant
+- Added Console and ServerConsole classes
+- added command line info
+- overworked and extended some classes
+- added TimeoutInputStream class
+- added connection factory
+
+27.05.2011
+- Added ant build script
+- Restructured the project
+- Added new Toolset structure
+- Added common tools and some common tools implementations
+- Added Preon32 tools and implementations
+- Added command line parser
+- Added some utility classes
+
+

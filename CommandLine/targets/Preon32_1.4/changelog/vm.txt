@@ -1,0 +1,681 @@
+######################################################
+# CHANGELOG VIRTENIO VM
+######################################################
+
+09.12.2013
+- Fixed a bug in chunked stack model. There could be null pointers after a method call because the GC removed some objects which where incorrectly removed. 
+
+02.12.2013
+- System time can now be set directly via the SystemTime class
+- Extended the FastFlashLogger to iterate through already removed data sets and added removeAt method
+
+01.11.2013
+- Optimized the way the VM handles floating point operations.
+- Improved the internal VM context operations like pushing and pulling from and to VM stack.
+- Some other minor changes in structure
+
+17.10.2013
+- Renamed Generator to ThreadedGenerator
+- Added CallbackGenerator as a second generator which uses a callback object to provide generated data
+
+10.10.2013
+- Added ShortFloat100 class for a two byte short float * 100 value. DataBuffer now uses the new class ShortFloat100 for its short float * 100 data type.
+
+09.10.2013
+- Fixed String to Float/Double parser which now supports NaN and +/- Infinity.
+- Optimized Float/Double to String conversion.
+
+08.10.2013
+- Fixed, optimized and extended the com.virtenio.crypt package. Added classes BlockProvider, ChunkBuffer, CryptInputStream and CryptOutputStream.
+
+04.10.2013
+- Added a new com.virtenio.crypt package which contains abstractions from crypt algorithms. Contains a native implementation of the AES encryption system which uses native VM resources to bring support for AES128 and AES256.
+
+02.10.2013
+- Added FlashFifo class which is another flash logger implementation which takes care about unwanted data changes and tries to repair as most as possible.
+
+25.09.2013
+- Fixed ADXL345 pollDataReady. Removed interrupt enable flag check which is not needed.
+- Added LTC2495 ADC driver
+
+23.09.2013
+- FixedFifo is now iterable and added remove() and remove(int) methods to remove data sets
+- Added Semaphor class
+
+23.09.2013
+- Optimized the FastFlashLogger implementation and the ADXL345 triple axis accelerometer class
+
+23.09.2013
+- Added the FastFlashLogger class which is a new flash logger implementation which is somehow a little better compared to the FlashLogger class. The FastFlashLogger class supported round robin of data in flash.
+- Added FlashLoggerDumper class to dump flash logger contents
+
+20.09.2013
+- Added a toString method to the flash logger DataSet class and optimized the FLashLogger implementation a little bit.
+
+18.09.2013
+- Added the Generator class which uses thread to generate data which then can be yield in a python like manner. 
+
+11.09.2013
+- Change the DeviceDriver.isOpen interface method to DeviceDriver.isOpened which affected all classes which uses or implements this method
+
+28.08.2013
+- Added DataBuffer.getNumberAt method
+
+14.08.2013
+- Change the getData method of the Datagram class. This method now returns a copy of the data of the datagram. Added the getBuffer method which now returns the internal buffer of the datagram.
+
+02.07.2013
+- Optimized the Thread.join() method. Is now implemented natively. Join can now better be used when using power states.
+- Minor changes in CANMessage class.
+- Added LIN.sendWakeUp method to generate a LIN bus wake up command.
+- Added endianess for the data in the LINMessage class
+- Extended the slave implementations of the LIN bus driver
+- Added AsyncEvent.getHandlerCount method to get the number of registered handlers
+- Added AsyncEvents.getFreeEventId and AsyncEvents.getFreeEvent methods to get a free event/event id
+- Data type fixes in the pow(...) implementation
+- Some other minor changes in the VM implementation
+
+26.06.2013
+- Optimized the LIN bus driver and added a LINSlace and LINAutoSlave class
+
+20.06.2013
+- Added first version of the LIN bus driver
+
+11.06.2013
+- Added HexUtils class and moved methods from StringUtils to HexUtils.
+- Added 6LowPan Package to the classlib
+- Byte sequences can now be added to the DataBuffer. A new type was added therefore.
+- Added NetAdddress.getBytes(boolean littleEnd) method
+- Fixed double <-> float cast of special double/float values in the VM
+
+31.05.2013
+- Added a special two byte float * 100 data type to the DataBuffer class which can be used to store special float values with minimized data size.
+- Optimized the methods in the DataHelper class
+
+25.05.2013
+- Added DataBuffer.appendUnsignedLong method to append a long value as an unsigned value.
+
+21.05.2013
+- Added isSleep method to the AT86RF231 class test whether the radio chip is in sleep mode or not.
+- Added setPayloadAt(int pos, byte[] data) method to the IEEE802.15.4 frame class.
+- Added the methods FrameSecurity.encrypt(Frame frame, int dataId, int dataOffset) and FrameSecurity.decrypt(Frame frame, int dataOffset) to encrypt/decrypt only a portion of the frame.
+- Added methods clear(), get(int pos), peek(int pos), remove(int pos) to the FixedFifo class
+
+13.05.2013
+- Added functionality to the DataBuffer class. New argumentless constructor and a parse method to parse a string into a DataBuffer instance which is a nice method to make a string from the buffer and create a DataBuffer from that string.
+
+02.05.2013
+- Strings can now be added to a DataBuffer
+- Added the SimpleCalendar class which is a small and handy calendar implementation and which csan be used to convert RTC date and time value to milliseconds and vice versa.
+- Changed some RealtimeClock related classes which now used the new SimpleCalendar. The RealtimeClock interface could be simlified. Updated the NativeRealtimeClock and the DS3231 classes due to the RealtimeClock interface change. The AbstractRealtimeClock could be removed. A RealtimeClockHelper class was added with some helper functions.
+
+25.04.2013
+- Extended the CPU interface, added a new method which eases setting and getting values from grouped components.
+- Updated the DS3231, now opens the i2c if the bus is closed in the open method.
+- Added open method to MAX17048 class
+- Improved the FrameSecurity class which fixes some issues
+
+15.03.2013
+- improved documentation of DataBuffer class
+- Added a call to TriggeredADCSampler.reset to reset the sampler on init of the TimerADCSampler.
+- Fixed a memory overwrite bug in the native ADC implementation when a callback comes twice per start.
+
+22.02.2013
+- printStream now implements the Appendable interface.
+- Added System.lineSeparator method.
+- Added PropertyHelper.makeKey method to generate a key name dynamically.
+- Fixed a bug in the toString method of the IP6Address class.
+- Added java.util.Properties class.
+- Added SoftI2C class which implements I2C and which is a software variant of the I2C bus which only needs two GPIO's
+- Added PrintWriter class
+
+06.02.2013
+- Added enable32kOuput method to the DS3231 class
+- Added methods to the NativeADCSampler to calculate some varaibles based on some inputs.
+
+01.02.2013
+- Improved documentation in classes Button and ButtonOnGPIO
+- Ensures that the I2C is opened in open method of the DS3231
+- Renamed MAX1704x to MAX17043
+- Added new GPIO-Modes PUSH-PULL and OPEN-DRAIN to the GPIO package
+- New method IRQ.getGPIO() to get an GPIO instance of for the IRQ so that the GPIO can be opened in a special mode.
+- Added method getTimeInMillis(boolean) to the RealTimeCounter class to auto load the values from the RTC which then are used to compute the millis.
+- Added drivers for switches. Package is com.virtenio.driver.switch_
+- Added fuel-gauge driver MAX17048
+
+04.01.2013
+- Fixed stream reader issue not returning from read
+- Added ascii stream reader and writer
+
+11.12.2012
+- Added driver for DS3231 RTC
+- Added AbstactRealtimeClock class with some basic functionality for RTC's
+- Overworked related RealTimeclockClasses and interfaces which implements the new RealTimeClock interface methods.
+
+29.11.2012
+- Added getIdleTime() method to VM class
+- Some ADXL345 fixes
+- Added setPA and getPA to the AT86RF231 class so that amplifiers can be used.
+- New argument of the encrypt function in the class FrameSecurity which is needed to set an Frame identifier from outside the class
+
+14.11.2012
+- Added simple floating point parser to parse String to float/double
+- Added StringUtils class
+
+09.10.2012
+- Added high resolution method to DS1820
+- Better dump method in FlashLogger
+- Added read bool to Console
+
+12.09.2012
+- Added some new functionality to the Arrays class
+- Added method newArrayOfType to create a new array of a class type to the VM class
+- Fixed documentation of Reader and Writer class
+- Added method availableProcessors to Runtime class
+- Added new constructors to StringIndexOutOfBoundsException and ArrayIndexOutOfBoundsException
+- Added methods getComponentType, isPrimitive, isInterface, isArray, cast, isAssignableFrom to Class
+- Added method isEmpty to String
+- Added method getId() to Thread. Added fields so that ThreadLocals can be used.
+- Added first public version of the native ADC sampler
+- Volatile fix in TimedADCSampler
+- Fixed waitFor(long) in Button. The long argument less than 0 is now supported with the meaning to wait an unlimited time.
+- Some documentation fixes in Timer and IRQ classes
+- Renamed method getCount to getSourceCount
+- Some new Utility classes ComparableTimSort, DualPivotQuicksort, TimSort, TreeSet, WeakHashMap
+- Added concurrent package
+- Added reference classes (SoftReference, WeakReference), but the intended functionality is not fully suported by the VM, but they are needed in some classes. The references are threaded as normal references by the VM.
+- Added ThreadLocal classes
+- Added math package
+
+03.09.2012
+- Bugfix in MAX17043 data sheet: Changed Soft POR command from 5400h to 0054h to avoid possible memory corruption
+- Bugfix: Corrected calculation in method getCellVoltage() of class MAX17043
+
+31.08.2012
+- New version of piped streams
+- Classified exceptions as errors in class linker ant task
+
+30.08.2012
+- Added I2C method aquireLock and releaseLock which are needed when using the repeated start feature of the I2C.
+- Fixed related classes which uses the repeated start feature if I2C
+- Fixed a DataBuffer bug in getting type of unsigned bytes
+
+17.08.2012
+- Fixed a scheduler bug in the VM which could cause problems in rare cases
+- Introduced improved stream reader concept
+- Added UTF8 stream codec. String.getBytes("UTF8") or new String(bytes, "UTF8") is now possible
+- Removed UTF8Helper, not needed any more
+- Renamed the Utils class to DataHelper
+- Fixed some documentation issues in several classes
+
+30.07.2012
+- Renamed the NumberBuffer class to DataBuffer
+
+26.07.2012
+- Some improvements of the BH1710FVC class
+
+20.07.2012
+- Overworked a lot of sensor drivers in the package com.virtenio.drivers.device.
+- Overworked the AES128Provider classes of the AT86RF231.
+- Removed the AT86RF231Exception, ChannelBusyException and NoAckException in the package com.virtenio.drivers.device.at86rf231 and replaced this with more general exceptions.
+- Overworked the FrameSecurity class due tu latest changes of the AES128Provider classes.
+- Overworked the RadioDriver clas of the package com.virtenio.radio.ieee_802_15_4.
+- Overworked the RadioDriverFrameIO and the ThreadedFrameIO due to latest API changes.
+- Moved the ErrorListener class to the package com.virtenio.io
+- Extended the FixedFifo class. Added the isFull method.
+- Removed the classes ChannelBusyException, NoAckException from the package com.virtenio.radio. The package com.virtenio.io already provides these classes.
+- Fied some documentation issues of several classes.
+
+10.07.2012
+- Added constructor IP6Address() to the IP6Address class to create an empty IP6 address
+- Added constructor IP4Address() to the IP4Address class to create an empty IP4 address
+
+06.07.2012
+- NativeCPU now can only manage one CPU instance. Managing multiple CPU instance is not needed.
+- Fixed a AT86RF231 driver bug. RX_START can be lost, whyever. If this happens and if we have enabled rx save mode then chip can hang in rx mode and we will never receive a frame until we switch to an other state.
+
+04.07.2012
+- Improved the AT86RF231 to work correctly in some marginal cases.
+- Added remove Method to the FixedFifo class.
+
+02.07.2012
+- Removed the setFrameProtection method from the AT86RF231. Use setRxSaveMode instead.
+- Added length check in FrameSecurity class.
+
+29.06.2012
+- Added dis ack and promiscuous mode to the AT86RF231
+- AES128ProviderCBC and AES128ProviderECB can now also be used if the the transceiver is in sleep or TRX_OFF mode. 
+- Added peek method to the FixedFifo class.
+
+25.06.2012
+- Added some fixes to the CANMessage class.
+- Added some more information to thrown AT86RF231 exceptions.
+- close method of NativeGPIO now resets the invert member of the instance.
+- Added some more documentation to the RealtimeCounter interface.
+- Removed the Time class. The System class has method to get time stamps so we don't need the Time class.
+
+18.06.2012
+- AT86RF231.isSleeping now returns the state of a member of the instance.
+- Added a FlashLoggerListener to the FlashLogger class to get events of the logger. Operations can take a long time if they are executed. Usefull when using a watchdog.
+- Fixed some parts of the ThreadedFrameIO class.
+- Added a NumberBuffer fix when reading double values. Could return wrong results.
+
+11.06.2012
+- Added new constructor to AT86RF231Exception class.
+- Added frame length check to AT86RF231 when reading frames to get a more detailed exception.
+- Added open and isOpen method to DS1820 class.
+- Added a new Constructor to DriverException, NativeDeviceDriver, RadioDriverException.
+- Overworked the setState to STATE_TRX_OFF of the AT86RF231. Is now save when the chip is receiving frames.
+
+08.06.2012
+- Fixed a NumberBuffer bug. Reading long value could return wrong values.
+
+06.06.2012
+- Remove the Threads class. Move the method to the VM class.
+
+30.05.2012
+- Added enable, disable and enableChannel, disableChannel to PWM interface and implemented this method in NativePWM class.
+- Timers can now have a resolution better than milliseconds. Added constants UNIT_XXX to the timer interface so that timers can be opened in the appropriate mode. You can now open the timers which are milli-, micro, nanosecond or frequency based.
+- Added enable and disable to the timer interface and implemented this method in NativeTimer.
+- Added the new timer functionality to PeriodicTimer, OneShotTimer and EventTimer classes.
+- Added geetters to the EventTimer class.
+- Changed the USART.open method. Now there is only one argument to the function. This must be an instance of USARTParams, which is a container for all USART parameters.
+- Two new USART parameters added. This are the input and output buffer size. The NativeUSART implementation uses this values to allocate buffers of this size.
+- Some modifications in AsyncEvenets class. Made some method instance specific.
+- Added dataRate argument to the open method if the I2C. NativeI2C used this argument to open the I2C into the right speed mode.
+- Fixed the T6615 class due to USART changes.
+
+16.05.2012
+- Some CAN modifications. Added CANFilter class with some more filter features. CAN filter MSG Type and MSG ID format. Extended the CANMessage. Can send data MSB or LSB.
+
+15.05.2012
+- Documentation fix of DS1820, I2C and USART
+- Added method getAt(i) to the NumberBuffer class
+- Added CAN bus driver classes
+
+27.04.2012
+- Added the first version of the FlashLogger class to create a logger module for flash instances
+- Added the first version of the NumberBuffer class which can store various data types
+- Renamed getValues to getValuesRaw of the class ADXL345. Added convertRaw method to convert the raw values to the acceleration values with the unit g.
+
+25.04.2012
+- Renamed DefaultRadioDriver of the at86rf231 package to AT86RF231RadioDriver and fixed some missing parts
+- Some minor changes in class M25P80
+- Added the method compensate to the MPL115A2 to compute the compensated pressure value
+- Minor fixes in RadioDriver.java
+- Added the MemFlash.java which is a flash implementation which stores data in RAM
+
+22.03.2012
+- Fixed a critical floating point addition bug
+- Added the getIAmCoordinator method to the AT86RF231
+
+08.03.2012
+- Overworked the FrameIO model.
+- Added IEEE 802.15.4 driver model and AT86RF231 driver implementation of this model.
+- Added IP4Address and IP6Address classes.
+- Fixed some comments in classes PrintStream, FrameSecurity, RadioDriver
+- Added the class Console, to read data from a console.
+
+15.02.2012
+- New public constructor in class NetAddress: NetAddress(int)
+- Renamed the local byte buffer of the class NetAddress from address to buffer. This change also affected the classes PANAddress and Address in IEEE_802_15_4 package.
+- Small improvements in FrameSecurity class
+
+10.02.2012
+- Small improvements in class Utils
+- Removed class RadioSecurity from at86rf231 package. Functionality is now replaced with the class FrameSecurity.
+- Documentation fixes in class MAX1704x
+- Improved comments of classes I2C and SPI
+- Added class AES128Provider
+- Added classes AES128ProviderCBC and AES128ProviderECB to package at86rf231 which implement the abstract class AES128Provider to provide the AES features of the AT86RF231.
+- New driver class for the digital thermometer DS1820
+- Driver class for the T6615 dual-channel CO2 module
+- Added interface OneWire and class NativeOneWire so that the 1-Wire bus can be used.
+- Added class FilterFrameIO which is an FrameIO implementation which redirects method invocations to an other FrameIO instance
+- Added the class FrameSecurity which provides a basic frame security solution
+- Added class SecureFrameIO which is an FrameIO implementation which uses the FrameSecurity implementation to secure frame transmission and reception
+
+07.02.2012
+- Improvements of the scheduler of the VM
+
+18.01.2012
+- Fixed a bug in System.arrayCopy when copying elements from an array of type A to an array of type B with the condition that B is a subtype of A
+- Renamed class CRC to CRC16 and renamed all methods of that class
+- Added some more comments to class AT86RF231
+- Added the method isOff and isOn to the LED interface and implemented this method in the classes LEDOnGPIO and LEDList
+- Added the constant ADDR_64 to the class AbstractFrameControl
+- Added two new classes: NoClassDefFoundError and RadioSecurity
+
+11.01.2012
+- Documentation changes in class GPIO
+- Added getState method to class IRQ, to get the state of the IRQ pin (high or low)
+- implemented the getState method in NativeIRQ
+- Added the method getGPIOInstanceId to class NativeIRQ to get the instance id of the GPIO pin which is used as IRQ pin
+
+09.01.2012
+- added methods getPANId, getShortAddress, getExtendedAddress to AT86RF231
+
+12.12.2011
+- Extracted time method from class VM to class Time
+- Minor setPriorit fix added
+- API change: Moved classes from com.virtenio.driver.button.gpio to com.virtenio.driver.button
+- API change: Moved classes from com.virtenio.driver.flash.spi to com.virtenio.driver.flash
+- API change: Moved package com.virtenio.driver.ieee_802_15_4.at96rf231 to com.virtenio.driver.device
+- API change: Moved classes from com.virtenio.driver.led.gpio to com.virtenio.driver.led
+- API change: Moved classes from package com.virtenio.driver.sensor to com.virtenio.driver.device
+- Event thread of the VM now has maximal priority. Can be changed by setPriority method of the AsyncEvents class.
+- New scheduler enabled in VM. New scheduler uses 10 thread lists and each threads is part of exactly one of these lists. The priority of a thread determines which list is used for a thread. Lower priorized threads only run if there is no higher priorized runnable thread. Time slices of threads are now more fine-grained.
+
+01.12.2011
+- Driver class for MAX17043/17044 added
+- Fixed some class comments
+- Added capacity method to FixedFifo class
+
+25.11.2011
+- Added optimization for simple getter methods. Optimization is used if a getter method is final or called statically.
+
+18.11.2011
+- Corrected comments of several classes
+- final methods optimization added. Can be called statically which is faster than dynamic calling.
+
+11.11.2011
+- Added interleaved transmit to AT86RF231.java
+- Small fix in ADXL345.java
+- Fixed comments in Frame.java
+- Added functionality to change threading mode. Affected classes are VM.java
+- Added class FixedFifo.java
+
+03.11.2011
+- Some constant corrections in UserConstants.java
+- Slightly improved the AT86RF231.java driver
+
+01.11.2011
+- Small fix in usart polling mode and small timeout fix in AT86RF231.java driver
+- Method pending added to USART classes
+- Method ringCmp added to Utils.java
+
+28.10.2011
+- Added methid isOpen to all driver classes. Implemented this method in all native driver implementation classes.
+- Removed NativeButton.java. Not needed any more. Replace with ButtonOnGPIO class
+- NativeAT86RF231 class removed. Is now replace with a pure Java variant which is more flexible. The driver class for AT86RF231 instance is now AT86RF231.java
+- All sensor driver classes now implements DeviceDriver.java. Affected classes are HMC1043.java, ADT7410.java, BH1710FVC.java, HMC5883L.java, ITG3200.java, MPL115A2.java, SHT21.java, ADXL345.java
+- SPIChipSelector.java now implements DeviceDriver
+- Small improvement of toString method in Frame.java
+- Lock.java class added for more flexible locks than synchronized blocks
+
+25.10.2011
+- Fixed comments in AbstractCodec.java
+- Added methods setLinkQuality and setEnergyDetectionValue to Frame.java
+- Removed class NativeBackupRegister, Not needed any more. Backup registers are now provided as RAM like instance. Use NativeRAM.java to get access to backup register.
+- Fixed comments in SPI.java and SPIChipSelector.java
+- Fixed repeated start bug in ADT7410.java
+- Repeated start feature added to I2C.java and NativeI2C.java. Needed by some devices.
+ 
+18.10.2011
+- Fixed comments in Thread.java
+- Added sample time identifiers in ADC.java
+- Changed setSampleTime of class NativeADC due to new sample time identifiers in ADC.java
+- Fixed a timeout value bug in AbstractFrameIO and TRXFrameIO
+- Fixed some bugs in ADT7410.java
+- Improved comments in setReceiveTimeout of class FrameIO.java
+- Improved some parts in AODV implementation
+- Added class ThreadedFrameIO
+
+12.10.2011
+- Fixed a bug in NetAddress equals method
+- Added some error and exception classes. Some of these needed by java compilers. These are ClassCircularityError, ClassFormatError, EnumConstantNotPresentException, ExceptionInInitializerError, InstantiationError, InternalError, NoSuchFieldError, NoSuchFieldException, NoSuchMethodError, NoSuchMethodException, TypeNotPresentException, UnknownError, UnsatisfiedLinkError, UnsupportedClassVersionError, VerifyError
+
+30.09.2011
+- Changed some AODV classes to differentiated between MAC address and node address
+
+29.09.2011
+- Some fixes in AODV route classes
+- Added PANAddress class to IEEE 802.15.4 package
+- Changes some classes in AODV simulator
+
+28.09.2011
+- Added some classes from nio package
+- Added NetAddress class
+- Some class doc changes
+- Overworked some parts in AODV implementation
+
+22.09.2011
+- Added classes GPIOList and LEDList
+- Fixed ADC.java and Class.java code doc
+
+15.09.2011
+- Added new Constructor to IOException
+- Added some missing functionality to Writer.class
+- Added ChannelBusyException, NoAckException, PendingDataException to at86rf231 package which extends the new AT86RF231 class
+- Overworked all driver class to work with new native driver interface and added driver specific exceptions
+- Added better Excaption handling in TRXFrameIO.class
+- Removed NativeSPIChipSelector, class SPIChipSelector is currently enough
+- Renamed FRAM package and classes to RAM. The same driver can be used for all RAM like devices regarless whether some devices are volatile or not.
+- Added ChannelBusyException, NoAckException, PendingDataException to com.virtenio.io package which extends IOExcception class
+- Added alot of new classes to java.io package. Thats are CharArrayReader, CharArrayWriter.java, CharConversionException.java, EOFException.java, FilterInputStream.java, FilterReader.java, FilterWriter.java, IOError.java, InputStreamReader.java, LineNumberReader.java, OutputStreamWriter.java, PipedInputStream.java, PipedOutputStream.java, PipedReader.java, PipedWriter.java, PushbackInputStream.java, PushbackReader.java, SequenceInputStream.java, StreamTokenizer.java, StringReader.java, StringWriter.java
+- Changed classes in ieee802.15.4 classes. Functionality of FrameControl extracted and inserted to AbstractFrameControl. FrameControl now extends AbstractFrameControl. Frame extends AbstractFrameControl too. This changes makes all methods from FrameControl available in Frame.
+- Overworked ieee802.15.4 FrameIO class
+- Renamed package com.virtenio.driver.sensors to com.virtenio.driver.sensor
+
+12.09.2011
+- Added PWM#setDutyCycle and PWMChanel#setDutyCycle method to change the duty cycle without close and reopen
+- Overworked AODV routing classes
+
+07.09.2011
+- Added method Frame#copyFrom(Frame frame)
+- Renamed package com.virtenio.vm.events to com.virtenio.vm.event
+- Renamed package com.virtenio.drivers to com.virtenio.driver
+- Renamed package com.virtenio.driver.backupregisters to com.virtenio.driver.backupregister
+- Change Method signature in PropertyHelper class and added some new functionality
+
+
+02.09.2011
+- Interface AT86RF231 now extends DeviceDriver
+- Added lastError feature to NativeDeviceDriver
+- Added more specific CPUException to CPU driver package and replace IOException with CPUException in CPU related classes
+
+29.08.2011
+- Core part changes of the VM. Made 64 Bit variables save instructions
+- Added code to better customize the interpreter parts for different platforms
+- Optimized return from method operation code in the VM.
+
+25.08.2011
+- Added void as class name in Class.java. Added this functionality to the Classlinker
+- improved Object.wait(millis,nanos) implementation
+- Fixed a bug in Thread.join() method
+- Added the static TYPE member to native type wrapper classes
+- Improved some test classes
+- Added code Classlinker to remove native type wrapper member TYPE from static variables. This variables are not needed at runtime.
+- Synchronized stack trace printing on the output stream to reach continuous stack traces in console
+
+23.08.2011
+- Some corrections in Java doc
+- Removed some serialVersionUID fields
+
+19.08.2011
+- Added package com.virtenio.drivers.ieee_802_15_4/at86rf231 and moved related classes into this package
+- modified the progard file of the Classlinker and added better file names
+- changed the Classlinker build script and introduced new build structure
+
+18.08.2011
+- added package description html file to all classlib packages
+- added ant build script to build the javadoc
+
+15.08.2011
+- Fixed AT86RF231 timestamp. only positive timestamps are allowed. The sign bit is removed.
+- added new clock.h file. Intrucues new clock structure into the VM. New variant is more flexible.
+- updated some VM parts to work with new clock header file
+- updated some driver implementations to work with new timeout functions and new clock structure
+- refactored some things
+- overworked some code documentation
+
+11.08.2011
+- Erweiterung der Build-Skripte des Classlinkers um target "dist". Verwendung von proguard zum Schutz der Funktion (Reverse Engineering) des Classlinkers. Verwendung von relativen Pfaden zu den Tools wie ant oder proguard. 
+
+11.08.2011
+- Added and corrected some java docs
+- Added AODV route package to classlib
+
+09.08.2011
+- Added and corrected some doc in classes
+- Modified the FrameIO classes
+- readFully method in class USART added
+- Made IEEE 802.15.4 Frame classes final
+- Added classes PayloadInputStream and PayloadOutputStream
+
+03.08.2011
+- Added class PendingDataException used in AT86RF231 transceiver
+- Added classes AbstractFrameIO and RxTxFrameIO in at86rf231 package
+- Added interface FrameIO
+- Added regex classes
+- Overworked some parts in Classlinker
+- Added and corrected some docs
+- renamed isPendingFrame to isFrameAvailable and setAutoAckAckTime tosetAutoAckTime in interface AT86RF231
+- Overworked class PrototypeFrameFactory
+- Method getCanonicalName added to class Class
+- Method newArray in class Utils made generic
+- Overworked some parts in Character class
+- Method T[] toArray(T[] contents) added to collection classes
+
+29.07.2011
+- Function desiredAssertionStatus in class Class added.
+- Class CharacterLatin1 added
+- Method binarySearchRange and binarySearch added to class Utils
+- Overworked class Character. Adapted to Character class from Java 1.6
+- Class NativeADCSampler added
+- Corrected some java docs
+
+28.07.2011
+- Javadoc correction in some classes
+- Added class NativeSPIChipSelector to natively lock and select SPI chips
+- Class Frame in IEEE 802.15.4 now implements Cloneable
+- Class PrototypeFrameFactory added
+
+20.07.2011
+- Calendar and TimeZone classes overworked. Currently only GMT time zone is supported and
+  daylight saving times are not supported.
+- Some java.text classes added: Annotation, AttributedCharacterIterator, AttributedString, CharacterIterator,
+  FieldPosition, Format, ParseException, ParsePosition, StringCharacterIterator, MissingResourceException
+
+15.07.2011
+- Utils.checkBufferParams renamed to checkArrayParams. All related classes changed.
+- New Methods in AT86RF231: getState, getChannel, getTransmitPower
+- New state constants of AT86RF231 added.
+- New Random class added
+- Method call speed of new stack model improved
+- Methods in class Utils added: nanoTime, microTime, milliTime, newArray, arrayLength, copyOfArray
+
+12.07.2011
+- Classes ArrayDequeue and StackOverflowError added
+- Thread methods join(millis) and join(millis, nanos) added
+- Thread.tickCount removed and Thread.nanoTime added
+- Math.round method added.
+- Math method log, log10 pow, exp implemented.
+- New stack model in VM implemented. Stack can now grow in size until there is no more memory.
+  Reached via stack chunks which can grow and shrink.
+
+05.07.2011
+- Classes AbstractList and AbstractMap overworked.
+- Some collection classes added: NavigableMap, NavigableSet, PriorityQueue, Queue, SortedMap,
+  SortedSet, Stack, TreeMap
+- Some java.util package classes added: Observable, Observer, RandomAccess, Timer, TimerTask,
+  TooManyListenersException
+- Thread.setName method added
+- Some minor code changes in VM and code improvements in driver adapters
+
+30.06.2011
+- Method ADC.getChannelList added to get a channel list of an ADC. Method in NativeADC driver
+  implemented.
+- Class ADCChannelList added
+- Classes EventTimer, OneShotTimer, PeriodicTimer added
+- Classes ADCSamplerListener, TimerADCSampler, TriggeredADCSampler added.
+- AsynchEvents.fire method made native. The method now places an event into events manager of the VM.
+  Event will now be executed in context of the event thread and no longer in context of the calling thread.
+
+
+29.06.2011
+- open and close method in NativeBackupRegisters added
+- Drivers NativeADC, NativeFlash, NativeFRAM, NativeIRQ, LED, NativeRealtimeClock, NativeWatchDog
+  overworked. Uses better native interfaces for more speed. Native adapters modified to work
+  with new interface.
+- Class ButtonOnGPIO modified to work with new GPIO driver interface
+- FRAM getSize method added to query the size of the FRAM, NativeFRAM getSize implemented.
+- GPIO.makeXXX methods removed. Replaced by GPIO.open method. NativeGPIO.open method implemented
+  and makeXXX methods removed.
+- Method signatures aesEncryptCBC and aesDecryptCBC of AT86RF231 changed. Arg iv moved to end.
+  NativeAT86RF231 changed.
+- LED.open method added
+- Sensor drivers HMC1043, ADT7410, BH1710FVC, ITG3200, MPL115A2 and SPIChipSelector overworked.
+  Works now with new GPIO interface.
+
+27.06.2011
+- Method Utils.checkBufferParams is now native. Now there is only one method for different array types.
+- Drivers NativeBackupRegisters, NativeI2C, NativeButton, NativeCPU, NativePWM, NativeRealtimeCounter,
+  NativeSPI, NativeTimer overworked. Native adapters modified to work with new interface.
+  Drivers are now faster and uses better native interface.
+- Some memory flags renamed
+- Native Method Utils.delayUs added to delay the VM in microsecond basis.
+
+23.06.2011
+- Bugfix in button driver
+- Bugfix in Realtime counter
+- ADCChannel open method added
+
+22.06.2011
+- AT86RF231#waitForFrame(Frame, timeout) changed. timeout can now be 0. In previous versions 0 was
+  the code for unlimited waiting.
+  Unlimited waiting is now a value less than 0. In case of a timeout of 0 the function checks if a
+  frame is available and if available receives it and then returns immediately after check or receiption.
+- Driver MPL115A2 and SHT21 extended.
+- Small extension in native vm timeout feature.
+
+17.06.2011
+- PWM functionality removed from Timer driver
+- PWM driver added
+- Documentation in Driver classes and interfaces overworked
+
+16.06.2011
+- Some documenttaion changes in drivers ADT7410, ADXL345
+- SPI#writeRead functionality added
+- Classlinker ant LinkTask extended
+- CPU driver added
+- PowerManager drive removed. Was replaced by CPU driver
+
+14.06.2011
+- Driver ADXL345 added
+- Constant in driver ADT7410 corrected
+
+10.06.2011
+- void GPIO#set(boolean set) method added. Sets or clears the GPIO depending on the argument
+- Drivers HMC1043, HMC5883L added
+- Drivers ADT7410, BH1710FVC, ITG32000, MPL115A2 overworked
+
+01.06.2011
+- Property with an empty key can be stored
+
+24.05.2011
+- java.lang.Class class overworked and some functionality added
+- Classlinker parts such as CodeTranslator overworked.
+- Signature change of main method from public static void main() to public static void main(String[] args)
+
+19.05.2011
+- ChannelBusyException and NoAckException in AT86RF231 driver added
+- isDataPending and setDataPending Method in IEEE 802.15.4 Frame added
+- IEEE 802.15.4 Constants interface added
+
+19.05.2011
+- Classlinker Ant integation added
+
+13.05.2011
+- Watchdog driver updated. Removed frequency method. Open is now done with a millisecond parameter
+
+10.05.2011
+- Some minor changes in ADC driver
+- Close method in ADC channel added
+- DefaultADCChannel Class added
+- ADC Driver multi channel sampling enhanced
+
+06.05.2011
+- Method calling in interpreter accelerated. Achived with structure change and code inlining
+- Memory Unit and Garbage Collection Bug fixed (Problem with unaligned memory handles)
+- New chunked handle stack model introduced. New model is better and can be used with locked memory

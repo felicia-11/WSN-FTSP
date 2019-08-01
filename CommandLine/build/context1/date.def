@@ -1,0 +1,267 @@
+name date
+import [
+	rt
+]
+header {
+	importPoolOffset 48
+	importCount 1
+	classPoolOffset 64
+	interfacePoolOffset 72
+	implementsPoolOffset 72
+	methodPoolOffset 72
+	codePoolOffset 116
+	stringPoolOffset 108
+	mainMethodIndex 0
+	staticPrimitiveFieldCount 0
+	staticReferenceFieldCount 0
+	classCount 1
+	interfaceCount 0
+	implementsCount 0
+	methodCount 3
+	codePoolSize 202
+	stringCount 2
+}
+classes [
+	{
+		index 0
+		name DateConverter
+		interfaceCount 0
+		superIndex 60
+		superImportIndex 0
+		implementsStart -1
+		methodCount 3
+		methodStart 0
+		superName java/lang/Object
+		instanceFieldCount 0
+		flags 33
+		srcFile DateConverter.java
+		implements [
+		]
+		instanceFields [
+		]
+	}
+]
+interfaces [
+]
+implements [
+]
+methods [
+	{
+		index 0
+		signature "<init>()V"
+		definedIn DateConverter
+		signatureHash 10657
+		maxStack 1
+		maxLocals 1
+		exceptionCount 0
+		argsFieldCount 1
+		flags 192
+		codeLength 6
+		codeOffset 0
+		getter1For -1
+		getter2For -1
+		localVars [
+			{
+				startPC 0
+				length 5
+				name this
+				descriptor LDateConverter;
+				index 0
+			}
+		]
+		pcToLine {
+			0 7
+		}
+		pcTranslation {
+			0 0
+			1 1
+			4 5
+		}
+	}
+	{
+		index 1
+		signature convertTime(J)Ljava/lang/String;
+		definedIn DateConverter
+		signatureHash 29921
+		maxStack 4
+		maxLocals 11
+		exceptionCount 0
+		argsFieldCount 3
+		flags 64
+		codeLength 154
+		codeOffset 6
+		getter1For -1
+		getter2For -1
+		localVars [
+			{
+				startPC 0
+				length 88
+				name this
+				descriptor LDateConverter;
+				index 0
+			}
+			{
+				startPC 0
+				length 88
+				name time
+				descriptor J
+				index 1
+			}
+			{
+				startPC 14
+				length 82
+				name millis
+				descriptor J
+				index 3
+			}
+			{
+				startPC 38
+				length 71
+				name seconds
+				descriptor J
+				index 5
+			}
+			{
+				startPC 62
+				length 60
+				name minutes
+				descriptor J
+				index 7
+			}
+			{
+				startPC 96
+				length 45
+				name hours
+				descriptor J
+				index 9
+			}
+		]
+		pcToLine {
+			0 10
+			14 11
+			38 12
+			62 13
+			96 14
+		}
+		pcTranslation {
+			0 0
+			1 2
+			4 11
+			5 12
+			6 14
+			7 16
+			10 25
+			11 26
+			14 35
+			15 36
+			17 38
+			18 40
+			21 49
+			22 50
+			25 59
+			26 60
+			28 62
+			29 64
+			32 73
+			33 74
+			36 83
+			37 84
+			40 93
+			41 94
+			43 96
+			46 96
+			47 100
+			50 104
+			52 106
+			55 110
+			57 113
+			60 117
+			62 119
+			65 123
+			67 126
+			70 130
+			72 132
+			75 136
+			77 139
+			80 143
+			81 145
+			84 149
+			87 153
+		}
+	}
+	{
+		index 2
+		signature "main([Ljava/lang/String;)V"
+		definedIn DateConverter
+		signatureHash 65044
+		maxStack 4
+		maxLocals 2
+		exceptionCount 0
+		argsFieldCount 1
+		flags 2
+		codeLength 42
+		codeOffset 160
+		getter1For -1
+		getter2For -1
+		localVars [
+			{
+				startPC 0
+				length 37
+				name args
+				descriptor "[Ljava/lang/String;"
+				index 0
+			}
+			{
+				startPC 8
+				length 29
+				name dc
+				descriptor LDateConverter;
+				index 1
+			}
+		]
+		pcToLine {
+			0 18
+			8 19
+			23 20
+			34 21
+			41 22
+		}
+		pcTranslation {
+			0 0
+			3 0
+			4 4
+			7 7
+			8 8
+			11 12
+			12 13
+			15 17
+			18 20
+			21 23
+			24 27
+			27 31
+			30 34
+			33 38
+			36 41
+		}
+	}
+]
+abstractMethods [
+]
+interfaceMethods [
+]
+staticPrimitiveFields [
+]
+staticReferenceFields [
+]
+strings [
+	{
+		index 0
+		string " : "
+	}
+	{
+		index 1
+		string "."
+	}
+]
+importedNativeMethods [
+]

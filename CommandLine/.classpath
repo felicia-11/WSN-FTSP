@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.4/lib/rt.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.4/lib/rtx.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.4/tools/Classlinker.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.4/tools/commander/Commander.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.4/tools/commander/jna.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.4/tools/commander/purejavacomm.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.4/tools/proguard.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.5/lib/rt.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.5/lib/rtx.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.5/tools/Classlinker.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.5/tools/commander/Commander.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.5/tools/commander/jna.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.5/tools/commander/purejavacomm.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.5/tools/proguard.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.5/tools/qdparser-1.1.0-javadoc.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32_1.5/tools/qdparser-1.1.0.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32/lib/rt.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32/lib/rtx.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32/tools/Classlinker.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32/tools/commander/Commander.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32/tools/commander/jna.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32/tools/commander/purejavacomm.jar"/>
+	<classpathentry kind="lib" path="targets/Preon32/tools/proguard.jar"/>
+	<classpathentry kind="lib" path="C:/apache-ant-1.9.13/lib/ant-launcher.jar"/>
+	<classpathentry kind="lib" path="C:/apache-ant-1.9.13/lib/ant.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

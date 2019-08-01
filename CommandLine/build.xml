@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Preon32 Sandbox" basedir="." default="devel.all">
+
+	<!-- Check whether currentContext is available -->
+	<available file="config/currentContext.properties" property="curentContext.exists" />
+	<fail unless="curentContext.exists"
+	      message="Please configure a context and set it to the current one." />
+
+	<!-- Include properties -->
+	<property file="config/currentContext.properties" />
+	<echo level="info">Using context "${context.file}"</echo>
+	<property file="${context.file}" />
+	<property file="${common.properties.file}" />
+	<property file="${common.properties.file0}" />
+	<property file="${common.properties.file1}" />
+	<property file="${common.properties.file2}" />
+	<property file="${common.properties.file3}" />
+
+	<!-- Predefine target if not set and include target -->
+	<property name="target.name" value="Preon32" />
+	<property name="target.dir" value="targets/${target.name}" />
+	<property file="${target.dir}/target.properties" />
+	<available file="${target.dir}" property="target.dir.exists" />
+	<fail unless="target.dir.exists"
+	      message="The target '${target.dir}' does not exists. Check your context file." />
+
+	<!-- Create the context name -->
+	<dirname property="context.name.0" file="${context.file}" />
+	<property name="context.name.1" value="${context.name.0}" relative="true" basedir="config" />
+	<basename property="context.name.2" file="${context.file}" suffix=".properties" />
+	<property name="context.name" value="${context.name.1}/${context.name.2}" />
+
+	<!-- Predefine properties -->
+	<property name="commander.verbose" value="3" />
+	<property name="src.dir" value="src" />
+	<property name="src.path" value="${src.dir}" />
+	<property name="lib.dir" value="lib" />
+	<property name="build.dir" value="build" />
+	<property name="context.build.dir" value="${build.dir}/${context.name}" />
+	<property name="license.dir" value="license" />
+	<property name="license.file" value="${license.dir}/keys.txt" />
+	<property name="proguard.use" value="false" />
+	<property name="module.name" value="autostart" />
+
+	<!-- Define Classlinker task -->
+	<taskdef name="classlinker"
+	         classname="classlinker.utils.ant.LinkTask"
+	         classpath="${target.dir}/tools/Classlinker.jar" />
+
+	<!-- Define random task -->
+	<taskdef name="random"
+	         classname="classlinker.utils.ant.RandomTask"
+	         classpath="${target.dir}/tools/Classlinker.jar" />
+
+	<!-- Define ProGuard task -->
+	<taskdef resource="proguard/ant/task.properties" classpath="${target.dir}/tools/proguard.jar" />
+
+	<!-- Create terminal port and url if not set by user -->
+	<random min="50000" max="60000" property="terminal.port" />
+	<property name="terminal.url" value="socket://127.0.0.1:${terminal.port}" />
+
+	<!-- Predef commander task -->
+	<presetdef name="Commander">
+		<java classname="com.virtenio.commander.Commander" fork="true" failonerror="true">
+			<classpath>
+				<fileset dir="${target.dir}/tools" includes="**/*.jar" />
+			</classpath>
+			<sysproperty key="rxtx.base" value="${target.dir}/tools/commander/rxtx" />
+			<sysproperty key="jna.nosys" value="true" />
+			<arg value="-toolset=${commander.toolset}" />
+			<arg value="-verbose=${commander.verbose}" />
+		</java>
+	</presetdef>
+
+	<!-- Predef commander command task -->
+	<presetdef name="Commander.Cmd">
+		<Commander>
+			<arg value="-port=${commander.port.cmd}" />
+		</Commander>
+	</presetdef>
+
+	<!-- Predef commander boot task -->
+	<presetdef name="Commander.Boot">
+		<Commander>
+			<arg value="-port=${commander.port.boot}" />
+		</Commander>
+	</presetdef>
+
+
+	<target name="init">
+		<mkdir dir="${context.build.dir}/classes" />
+	</target>
+
+
+	<target name="devel.compile"
+	        depends="init"
+	        description="Compile java source files to class files">
+
+		<path id="devel.compile.classpath">
+			<fileset dir="${lib.dir}" includes="**/*.jar" />
+			<fileset dir="${target.dir}/lib" includes="**/*.jar" excludes="rt.jar" />
+		</path>
+
+		<javac srcdir="${src.dir}"
+		       sourcepath="${src.path}"
+		       destdir="${context.build.dir}/classes"
+		       source="1.6"
+		       target="1.6"
+		       classpathref="devel.compile.classpath"
+		       bootclasspath="${target.dir}/lib/rt.jar"
+		       debug="true"
+		       includeantruntime="false"
+		       debuglevel="lines,vars,source"
+		       encoding="ISO-8859-1"
+		       failonerror="true" />
+	</target>
+
+	<target name="devel.jar"
+	        depends="devel.compile"
+	        description="Archive java class files to a jar">
+		<delete file="${context.build.dir}/${module.name}.jar" quiet="true" />
+
+		<jar destfile="${context.build.dir}/${module.name}.jar"
+		     basedir="${context.build.dir}/classes" />
+
+		<path id="devel.vmm.classpath">
+			<file file="${context.build.dir}/${module.name}.jar" />
+			<fileset dir="${target.dir}/lib" includes="**/*.jar" excludes="rt.jar" />
+			<fileset dir="${lib.dir}" includes="**/*.jar" />
+		</path>
+	</target>
+
+	<condition property="devel.proguard.use">
+		<equals arg1="${proguard.use}" arg2="true" />
+	</condition>
+
+	<target name="devel.proguard"
+	        depends="devel.jar"
+	        if="devel.proguard.use"
+	        description="Compress java class files in a jar">
+		<delete file="${context.build.dir}/${module.name}-all.jar" quiet="true" />
+
+		<jar duplicate="preserve" destfile="${context.build.dir}/${module.name}-all.jar">
+			<zipfileset src="${context.build.dir}/${module.name}.jar" />
+			<zipgroupfileset dir="${target.dir}/lib" includes="**/*.jar" excludes="rt.jar" />
+			<zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
+		</jar>
+
+		<proguard>
+			-libraryjars ${target.dir}/lib/rt.jar
+			-injars      ${context.build.dir}/${module.name}-all.jar
+			-outjars     ${context.build.dir}/${module.name}-proguard.jar
+
+			-keepclasseswithmembers public class ${mainClass.name} {
+				public static void main(java.lang.String[]);
+			}
+			
+			-keepattributes *
+
+			-keepclassmembers class * {
+				&lt;fields&gt;;
+			}
+			
+			-dontoptimize			
+			-dontobfuscate
+			-dontskipnonpubliclibraryclassmembers
+			-forceprocessing
+		</proguard>
+
+		<path id="devel.vmm.classpath">
+			<pathelement location="${context.build.dir}/${module.name}-proguard.jar" />
+		</path>
+	</target>
+
+	<target name="devel.vmm" depends="devel.proguard" description="Build vmm application file">
+		<property name="classlinker.cp" refid="devel.vmm.classpath" />
+		<classlinker type="exe"
+		             name="${module.name}"
+		             mainClass="${mainClass.name}"
+		             classSearchPath="${classlinker.cp}"
+		             outputDir="${context.build.dir}"
+		             byteOrder="little"
+		             exportDef="true"
+		             codeAlign="1"
+		             imports="rt"
+		             moduleSearchPath="${target.dir}/lib"
+		             outputConfig="true"
+		             sizeInfo="true" />
+	</target>
+
+	<target name="devel.properties" depends="init" description="Creates the property file">
+		<property file="${device.properties.file}" prefix="device.property." />
+		<echoproperties destfile="${context.build.dir}/device.properties">
+			<propertyset>
+				<propertyref prefix="device.property." />
+				<mapper type="glob" from="device.property.*" to="*" />
+			</propertyset>
+		</echoproperties>
+	</target>
+
+	<target name="devel.all"
+	        depends="devel.properties, devel.vmm"
+	        description="Compiles and links VMM, creates target properties file">
+	</target>
+
+	<target name="devel.clean" depends="init" description="Cleans build file">
+		<delete includeemptydirs="true">
+			<fileset dir="${build.dir}" includes="**/*" />
+		</delete>
+	</target>
+
+	<target name="boot.reset"
+	        depends="init, boot.erase, boot.options.reset"
+	        description="Reset device">
+	</target>
+
+
+	<target name="boot.info" depends="init" description="Print boot information">
+		<Commander.Boot>
+			<arg value="-op=printBootInfo" />
+		</Commander.Boot>
+	</target>
+
+	<target name="boot.erase" depends="init" description="Erases the device">
+		<Commander.Boot>
+			<arg value="-op=erase" />
+		</Commander.Boot>
+	</target>
+
+	<target name="boot.firmware.upload" depends="init" description="Upload firmware">
+		<Commander.Boot>
+			<arg value="-erase" />
+			<!-- <arg value="-verify" /> -->
+			<arg value="-op=uploadFirmware" />
+			<arg value="-file=${target.dir}/vm.bin" />
+		</Commander.Boot>
+		<Commander.Cmd>
+			<arg value="-op=uploadModules" />
+			<arg value="-file=${target.dir}/lib/rt.vmm" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.write.protect"
+	        depends="init"
+	        description="Write protect entire device flash">
+		<Commander.Cmd>
+			<arg value="-op=writeOptionBytes" />
+			<arg value="-data=0000000000000000" />
+			<arg value="-mask=00000000FFFFFFFF" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.write.unprotect"
+	        depends="init"
+	        description="Write unprotect entire device flash">
+		<Commander.Cmd>
+			<arg value="-op=writeUnprotect" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.read.protect" depends="init" description="Read protect device flash">
+		<Commander.Cmd>
+			<arg value="-op=writeOptionBytes" />
+			<arg value="-data=FF00000000000000" />
+			<arg value="-mask=FF00000000000000" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.read.unprotect"
+	        depends="init"
+	        description="Read unprotect device flash. Results in deleting the entire device flash.">
+		<Commander.Cmd>
+			<arg value="-op=readUnprotect" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.wdg.enable"
+	        depends="init"
+	        description="Watchdog is enabled by hardware after power on">
+		<Commander.Cmd>
+			<arg value="-op=writeOptionBytes" />
+			<arg value="-verify" />
+			<arg value="-data=0000000000000000" />
+			<arg value="-mask=0001000000000000" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.wdg.disable"
+	        depends="init"
+	        description="Watchdog is disabled by hardware after power on">
+		<Commander.Cmd>
+			<arg value="-op=writeOptionBytes" />
+			<arg value="-verify" />
+			<arg value="-data=0001000000000000" />
+			<arg value="-mask=0001000000000000" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.reset"
+	        depends="init"
+	        description="Reset option bytes to default values">
+		<Commander.Cmd>
+			<arg value="-op=writeOptionBytes" />
+			<arg value="-verify" />
+			<arg value="-data=A5FFFFFFFFFFFFFF" />
+			<arg value="-mask=FFFFFFFFFFFFFFFF" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.print" depends="init" description="Prints option bytes">
+		<Commander.Cmd>
+			<arg value="-op=printOptionBytes" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.cmd.enable"
+	        depends="init"
+	        description="Enables the command interpreter">
+		<Commander.Cmd>
+			<arg value="-op=writeOptionBytes" />
+			<arg value="-verify" />
+			<arg value="-data=0000010000000000" />
+			<arg value="-mask=0000010000000000" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.cmd.disable"
+	        depends="init"
+	        description="Disables the command interpreter">
+		<Commander.Cmd>
+			<arg value="-op=writeOptionBytes" />
+			<arg value="-verify" />
+			<arg value="-data=0000000000000000" />
+			<arg value="-mask=0000010000000000" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.modify.enable" depends="init" description="Set modify option bit">
+		<Commander.Cmd>
+			<arg value="-op=writeOptionBytes" />
+			<arg value="-verify" />
+			<arg value="-data=0000020000000000" />
+			<arg value="-mask=0000020000000000" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="boot.options.modify.disable"
+	        depends="init"
+	        description="Clears modify option bit">
+		<Commander.Cmd>
+			<arg value="-op=writeOptionBytes" />
+			<arg value="-verify" />
+			<arg value="-data=0000000000000000" />
+			<arg value="-mask=0000020000000000" />
+		</Commander.Cmd>
+	</target>
+
+
+
+	<target name="cmd.info" depends="init" description="Print info">
+		<Commander.Cmd>
+			<arg value="-op=printInfo" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="cmd.license.upload" depends="init" description="Upload license key">
+		<Commander.Cmd>
+			<arg value="-op=loadLicenseKey" />
+			<arg value="-licenseKeysDir=${license.dir}" />
+			<arg value="-licenseKeysFile=${license.file}" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="cmd.properties.upload"
+	        depends="init, devel.properties"
+	        description="Upload properties">
+		<Commander.Cmd>
+			<arg value="-op=loadProperties" />
+			<arg value="-file=${context.build.dir}/device.properties" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="cmd.properties.list" depends="init" description="List properties on device">
+		<Commander.Cmd>
+			<arg value="-op=listProperties" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="cmd.properties.clear" depends="init" description="Clear properties on device">
+		<Commander.Cmd>
+			<arg value="-op=clearProperties" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="cmd.properties.all"
+	        depends="cmd.properties.clear, cmd.properties.upload, cmd.license.upload"
+	        description="Clear properties and upload everything again (including license key)">
+	</target>
+
+	<target name="cmd.modules.list" depends="init" description="List modules on device">
+		<Commander.Cmd>
+			<arg value="-op=listModules" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="cmd.module.upload" depends="init, devel.vmm" description="Upload module">
+		<Commander.Cmd>
+			<arg value="-delete" />
+			<arg value="-op=uploadModules" />
+			<arg value="-file=${context.build.dir}/${module.name}.vmm" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="cmd.terminal.open" depends="init" description="Open a terminal">
+		<path id="exceptionParserSearchPath">
+			<pathelement location="${context.build.dir}" />
+			<pathelement location="${target.dir}/lib" />
+		</path>
+
+		<property name="exceptionParserSearchPath" refid="exceptionParserSearchPath" />
+
+		<Commander fork="true" spawn="true" failonerror="false">
+			<arg value="-op=openTerminal" />
+			<arg value="-port=${terminal.port}" />
+			<arg value="-exceptionParserSearchPath=${exceptionParserSearchPath}" />
+		</Commander>
+
+		<sleep milliseconds="500" />
+	</target>
+
+	<target name="cmd.time.synchronize"
+	        depends="init"
+	        description="Synchronize the time with the host">
+		<Commander.Cmd>
+			<arg value="-op=synchronizeTime" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="cmd.module.run" depends="init, cmd.terminal.open" description="Run application">
+		<Commander.Cmd fork="true" spawn="true" failonerror="false">
+			<arg value="-op=runModule" />
+			<arg value="-name=${module.name}" />
+			<arg value="-connect=${terminal.url}" />
+		</Commander.Cmd>
+	</target>
+
+	<target name="cmd.module.upload.run"
+	        depends="cmd.module.upload, cmd.module.run"
+	        description="Upload and run module">
+	</target>
+
+
+	<target name=".run"
+	        depends="init, cmd.terminal.open"
+	        description="Runs the default (autostart) app on the target system">
+		<Commander.Cmd fork="true" spawn="true" failonerror="false">
+			<arg value="-op=run" />
+			<arg value="-connect=${terminal.url}" />
+		</Commander.Cmd>
+	</target>
+
+	<target name=".all"
+	        depends="boot.firmware.upload, cmd.license.upload,
+				cmd.properties.upload, cmd.time.synchronize, cmd.module.upload">
+	</target>
+</project>

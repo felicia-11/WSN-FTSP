@@ -1,0 +1,299 @@
+######################################################
+# CHANGELOG PREON32
+######################################################
+
+09.12.2013
+- Added user_hard_fault_handler() to print VM state in case of a hard-fault
+
+04.10.2013
+- Optimized LowPan CPU Sleep operation
+
+08.10.2013
+- Fixed the issue that the lowpan radio context breaks CPU power mode
+
+26.09.2013
+- Charger state can now be read with Mainboard.class
+- Changed memory model of the VM which is now better for larger memory block.
+
+18.09.2013
+- Reset reason and software reset reason can be read via the CPU driver
+- Fixed build process so that not implemented and error interupts cause software reset.
+
+11.09.2013
+- Changes due to DeviceDriver.isOpen -> DeviceDriver.isOpened change.
+
+08.07.2013
+- Removed the redundant ATOMIC_BLOCK and moved the TRX_DISABLE_IRQ to the transceiver config.
+
+11.06.2013
+- Moved lowpan package to main classlib
+
+21.05.2013
+- Improved the node, mainboard and shuttle class hierarchy
+
+25.04.2013
+- Changes due to change in node, shuttle and mainboard class structure
+- New structure for node, mainboard, shuttle classes
+- New mainboard and shuttle classes
+
+19.03.2013
+- Fixed memory overwrite bug when adc callback fires twice
+- Added property target.name to build.xml
+- Clears standby and WDG indication bit when system starts
+
+22.02.2013
+- Modified the flash that the transceiver IRQ is disabled while accessing the flash.
+- Fixed some Native flash implentation issues.
+- New sandbox buildfile version
+- Added DatagramSocket.tryReceive method
+- Re-enabled the native flash driver implementation which is needed when the LowPan stack is used.
+
+06.02.2013
+- Added Mainboard.class for revision 1.0
+- Moved the DS3231 class to the main class lib.
+
+11.12.2012
+- Added Node.class for revision 1.5
+- Added DS3231.class
+
+29.11.2012
+- Modification for new 1.5 revision
+- Added 1.5 node class which is used for the 1.5 revision
+
+11.10.2012
+- Fixed the proguard section of the sandbox build file to fix bugs with created proguard output
+
+09.10.2012
+- Overworked the sandbox build file. Added proguard option to shrink the size of linked vmm's
+- Overworked the CPUHelper class and added some new functionality
+
+12.09.2012
+- Added native ADC sampler implementation
+- Added jna.nosys system property to sandbox build file to use the sandbox version of jna
+
+30.08.2012
+- Added lock feature of I2C
+- Fix "copy and paste" bug in ADT7410Example
+- Added target run to sandbox build file
+
+17.08.2012
+- Overworked the LowPan, DataGram and DatagramSocket classes
+
+03.08.2012
+- Fixed description in sandbox build file
+- Added waitUntilReady and isReady methods to the LowPan class
+
+26.07.2012
+- Fixed some Examples due to latest API changes.
+
+20.07.2012
+- Renamed LowPanImpl to NativeLowPanImpl. Changed the LowPan class which now needs an instance of an LowPan implementaiton. The default implementation has been removed from the LowPan class.
+
+10.07.2012
+- Improved and extended the LowPan classes and the LowPan implementation.
+- Overworked examples due to latest API changes.
+
+06.07.2012
+- Added feature to the CPU driver to read the UID of the CPU.
+
+04.07.2012
+- Fixed the backup register implementation of the VM.
+
+08.06.2012
+- Merged changes of the HAL into the mainline .
+- Improved error management.
+- Shared access of flash/transceiver over RTC alarm IRQ is now possible.
+- Added new peripherals: OneWire, CAN.
+
+30.05.2012
+- Init pins in analog in mode to save current.
+- Overworked a lot of examples due to latest changes.
+- Added some new examples.
+- Improved the CAN VM driver implementation.
+- Fixed a CAN TX timeout bug.
+- Added SPI remap fature and fixed LSB MSB bug.
+- Added alot of minor improvements due to tests and examples and other parts of the platform.
+
+25.04.2012
+- Overworked some examples
+- Uses implicit power management to save energy
+
+15.03.2012
+- Added more comments to the sandbox config files
+- Fixes some LowPan bugs and added some more functionality.
+
+08.03.2012
+- Overworked some examples because ob API latest changes
+- Examples are no longer dependent of the proglets
+- Fixes LowPan bugs
+
+18.02.2012
+- Extended the LowPan implementation
+
+15.02.2012
+- Added the LowPan classes
+
+10.02.2012
+- Property terminal.url is now a default property in the build scripts
+- AODV example improvements
+
+20.01.2012
+- Added the implementation for the NativeOneWire class
+
+18.01.2012
+- The method getTransceiver of the class Node now opens the SPI instance to which the transceiver is connected into a speed mode which is also good for AES.
+
+06.01.2012
+- Improved the powerstate sleep of the PreonVM. Most power modes return on IRQ.
+- The method getTransceiver of the class Node now opens the SPI instance to which the transceiver is connected into a speed mode which is also good for AES.
+
+12.12.2011
+- Fixed several classes due to latest VM API changes
+
+01.12.2011
+- Added example MAX1704Example
+
+14.11.2011
+- Fixed Node.getFlash method of node revision 1.2: Returns now a MX25L8002 flash instance.
+
+05.11.2011
+- Overworked a lot of examples
+- Moved contents of package com/virtenio/platform to com/virtenio/platform/preon32
+- First version of the new proglet structure
+
+01.11.2011
+- BugFix: Changing CPU clock frequency disabled the system ticker which was the reason for not automatically switched Threads. After clock frequency change threads could only be switched by one of the methods yield, sleep, wait
+
+28.10.2011
+- Added class Shuttle.java which can be used for Shuttle related things. Helper methods like getLed are part of this class.
+- Removed class ShuttleConstants.java. Shuttle.java is the replacement.
+- A lot of examples and demos overworked to work with new classes.
+- System devices implement the isOpen driver method.
+- Added class Node.java which can be used for Preon32 node related things. Helper methods like getFlash and getTransceiver are part of the this class.
+
+25.10.2011
+- Updated backup register example due to latest class changes
+
+18.10.2011
+- Improved a lot of examples
+- Removed ADC sample time constants from CPUConstants.java. Not needed anymore. ADC.java contains predefined constants.
+- Added AODV example, FrameIO example, PWM example 
+
+12.10.2011
+- Added AODV routing test
+
+22.09.2011
+- overworked all examples and some tests
+
+15.09.2011
+- license key uploading changed a little. Description in readme.txt added.
+
+15.09.2011
+- improved the module execution target in ANT buildfile. If a module can not be executed a message is written to the terminal
+- Some examples overworked
+
+02.09.2011
+- Overworked CPUConstants.class
+- SPI channel where the transceiver is connected to is now closed after VM startup. Was open in prior versions
+- Added CPU driver functionality. Additionally you can set a CPU profile and a clock mode. This gives you the possibility to change the CPU clock frequency. Furthermore you can request the current CPU frequency, the current clock mode and the current clock profile.
+- Added helper method in CPUHelper.class
+- Added example suite to sandbox. Here you can see how things work and how to use the classes.
+- Change the meaning of the currentContext file in ANT build system. Now currentContext.properties only contains the name of the current context and not all properties of the current context. This makes some things easier.
+- Added the target cmd.license.upload to ANT build file to upload a license key automatically which are saved in a file.
+- default context.properties file contains more information of properties
+
+29.08.2011
+- VM dispatcher enhenced by assembly code. Interpreter now runs quite faster.
+
+23.08.2011
+- include filder of lib directory in sandbox are now **/* to include jar files from subdirectries of the lib folder
+- Some minor modification in build script
+
+15.08.2011
+- Fixed includeantruntime warning message
+- intruduced target folder in sandbox
+
+09.08.2011
+- Restructured the sandbox, updated the build scripts
+
+20.07.2011
+- added time synchronization to commander
+
+19.07.2011
+- Reduced atomic block size in SPI block transmit
+- phy set state bug fixed. Transceiver could go into busy state during state change.
+- fifo byte buffer capacity can now be larger than 255
+
+14.07.2011
+- Optimized the usart speed
+- Some minor changes in HAL
+
+01.07.2011
+- usart pending callback added
+- CPU profiles for all CPU modes added
+
+30.06.2011
+- Fixed some problems in ADC HAL
+- changed to new ADC default driver implementation for faster channel sequence sampling
+
+29.06.2011
+- Some driver implementations overworked.
+- Fixed at86rf231 setState bug when using ext clk.
+
+27.06.2011
+- I2C and backup registers driver implementation overworked
+
+23.06.2011
+- Button and real-time counter driver implementation overworked
+
+22.06.2011
+- Classes CPUError and CPUUtils added to platform package.
+- Some minor changes and restructures.
+- Flash erase chip bug fixed
+
+17.06.2011
+- timer PWM channel abstraction enhanced. Bandwidth of possible frequencies increased (1 Hz ... > 100 kHz). Automatic resolution adjustment used to reach that.
+  Current resolution can be requested with a function.
+
+16.06.2011
+- Major changes in SPI abstraction. Funtionality is the same.
+- Removed the Common.java, Platform.java and STM32F10x.java files. Was replaced by other specific files.
+- Removed the power manager driver implementation.
+- Added the Java classes CPUConstants, ShuttleConstants und CPU driver implementation.
+- WriteRead functionality sin SPI driver impl. added.
+- Java test cases modified to work with new classes.
+- sleepMs extended. If alarm could not be set we cant't go into sleep state.
+- IRTC alarm bug fixed: Setting alarms which are already elapsed
+- Soft reset added if using power state POWEROFF with a sleep time of 0 milliseconds or if alarm could not be set.
+
+10.06.2011
+- Fixed a Bug in SPI module. The SPI will not be disabled after an operation. This fixes a bug with some SPI modes. Use the close method to close the device.
+- Some minor changes in SPI driver implementation
+
+09.06.2011
+- improved code documentation
+- LSI possibility added in internal RTC
+- HAL:ADC extended
+
+01.06.2011
+- Hole SFFS propery module overworked and property overrun bug fixed.
+- SFFS configuration changed
+
+27.05.2011
+- First version of ant build files added to sandbox
+
+24.05.2011
+- User IRQ mapping problem fixed
+
+18.05.2011
+- New sandbox structure added
+- Sandbox build script modified
+- Eclipse meta files added to sandbox
+
+13.05.2011
+- Build tools structure modified
+- Some native driver files improved
+- Nullboard added
+- Some HAL name refactorings
+- Watchdog functionality added
+- Watchdog in commander inserted
